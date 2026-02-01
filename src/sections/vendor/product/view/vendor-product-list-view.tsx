@@ -57,12 +57,12 @@ export function VendorProductListView() {
     const confirm = useBoolean();
 
     const [tableData, setTableData] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                setLoading(true);
+                // setLoading(true);
                 const response = await axiosInstance.get(endpoints.vendor.product.list);
                 if (response.data && Array.isArray(response.data.data)) {
                     setTableData(response.data.data);
@@ -72,7 +72,7 @@ export function VendorProductListView() {
             } catch (error) {
                 console.error('Error fetching products:', error);
             } finally {
-                setLoading(false);
+                // setLoading(false);
             }
         };
 
@@ -145,7 +145,7 @@ export function VendorProductListView() {
                             onSelectAllRows={(checked) =>
                                 table.onSelectAllRows(
                                     checked,
-                                    dataFiltered.map((row) => row.id)
+                                    dataFiltered.map((row: any) => row.id)
                                 )
                             }
                             action={
@@ -169,7 +169,7 @@ export function VendorProductListView() {
                                     onSelectAllRows={(checked) =>
                                         table.onSelectAllRows(
                                             checked,
-                                            dataFiltered.map((row) => row.id)
+                                            dataFiltered.map((row: any) => row.id)
                                         )
                                     }
                                 />
@@ -180,7 +180,7 @@ export function VendorProductListView() {
                                             table.page * table.rowsPerPage,
                                             table.page * table.rowsPerPage + table.rowsPerPage
                                         )
-                                        .map((row) => (
+                                        .map((row: any) => (
                                             <VendorProductTableRow
                                                 key={row.id}
                                                 row={row}

@@ -8,19 +8,20 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { useCopyToClipboard } from 'src/hooks/use-copy-to-clipboard';
-
 import { paths } from 'src/routes/paths';
 
-import { toast } from 'src/components/snackbar';
-import { Iconify } from 'src/components/iconify';
+import { useCopyToClipboard } from 'src/hooks/use-copy-to-clipboard';
 
 import axiosInstance, { endpoints } from 'src/utils/axios';
 
-import { useAuthContext } from 'src/auth/hooks';
-import { DashboardContent } from 'src/layouts/dashboard';
 import { CONFIG } from 'src/config-global';
+
+import { DashboardContent } from 'src/layouts/dashboard';
+import { toast } from 'src/components/snackbar';
+import { Iconify } from 'src/components/iconify';
 import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
+
+import { useAuthContext } from 'src/auth/hooks';
 
 import './vendor-referral-tree.css';
 

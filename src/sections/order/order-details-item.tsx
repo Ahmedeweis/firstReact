@@ -8,9 +8,9 @@ import ListItemText from '@mui/material/ListItemText';
 
 import { fCurrency } from 'src/utils/format-number';
 
-import { IOrderProductItem } from 'src/types/order';
-
 import { Scrollbar } from 'src/components/scrollbar';
+
+import type { IOrderProductItem } from 'src/types/order';
 
 // ----------------------------------------------------------------------
 

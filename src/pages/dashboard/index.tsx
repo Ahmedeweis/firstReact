@@ -4,12 +4,12 @@ import { CONFIG } from 'src/config-global';
 import { useTranslate } from 'src/locales';
 
 import { OverviewInvestorView } from 'src/sections/investor/overview/view';
-import { OverviewVendorView } from 'src/sections/vendor/overview/view';
 import { OverviewClientView } from 'src/sections/client/overview';
+import { OverviewVendorView } from 'src/sections/vendor/overview/view';
 
 import { useAuthContext } from 'src/auth/hooks';
 
-import { BlankView } from '../../sections/blank/view';
+// import { BlankView } from '../../sections/blank/view';
 
 // ----------------------------------------------------------------------
 

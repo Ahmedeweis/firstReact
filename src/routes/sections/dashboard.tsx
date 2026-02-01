@@ -51,7 +51,7 @@ const VendorSuccessorListPage = lazy(() => import('src/pages/dashboard/vendor/su
 const VendorSuccessorCreatePage = lazy(() => import('src/pages/dashboard/vendor/successor/new'));
 const VendorSuccessorEditPage = lazy(() => import('src/pages/dashboard/vendor/successor/edit'));
 const VendorReferralTreePage = lazy(() => import('src/pages/dashboard/vendor/referral/tree'));
-const VendorProfilePage = lazy(() => import('src/pages/dashboard/vendor/profile'));
+
 const VendorListPage = lazy(() => import('src/pages/dashboard/vendor/list'));
 
 // Category

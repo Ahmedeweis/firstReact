@@ -251,9 +251,9 @@ function Container({ children }: Props) {
 // ----------------------------------------------------------------------
 
 function createUrl(type: 'back' | 'next' | 'go', activeStep: number) {
-  const step = { back: activeStep - 1, next: activeStep + 1, go: activeStep }[type];
 
-  const stepParams = new URLSearchParams({ step: `${step}` }).toString();
+
+  // const stepParams = new URLSearchParams({ step: `${step}` }).toString();
 
   return ``;
 }

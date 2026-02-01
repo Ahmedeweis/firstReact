@@ -11,27 +11,28 @@ import Dialog from '@mui/material/Dialog';
 import Divider from '@mui/material/Divider';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { useRouter } from 'src/routes/hooks';
 import { paths } from 'src/routes/paths';
+import { useRouter } from 'src/routes/hooks';
 
+import { useCart } from 'src/hooks/use-cart';
+
+import { useFormatPrice } from 'src/utils/format-price';
 import axiosInstance, { endpoints } from 'src/utils/axios';
 
+import { useTranslate } from 'src/locales';
 import { DashboardContent } from 'src/layouts/dashboard';
 
 import { toast } from 'src/components/snackbar';
-import { useTranslate } from 'src/locales';
 import { Iconify } from 'src/components/iconify';
 import { EmptyContent } from 'src/components/empty-content';
-import { useCart } from 'src/hooks/use-cart';
-import { useFormatPrice } from 'src/utils/format-price';
 
 import { getProductImage } from './product-shop-view';
 
@@ -113,7 +114,7 @@ export function ProductCartView() {
     } finally {
       setPlacing(false);
     }
-  }, [cartItems, shippingAddress, notes, clearCart, router]);
+  }, [cartItems, shippingAddress, notes, clearCart, router, t]);
 
   const handleOpenOrderDialog = useCallback(() => {
     if (cartItems.length === 0) {
@@ -121,7 +122,7 @@ export function ProductCartView() {
       return;
     }
     setOrderDialogOpen(true);
-  }, [cartItems]);
+  }, [cartItems, t]);
 
   const handleCloseOrderDialog = useCallback(() => {
     setOrderDialogOpen(false);

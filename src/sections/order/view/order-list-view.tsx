@@ -1,5 +1,7 @@
 import type { IOrderItem, IOrderTableFilters } from 'src/types/order';
+
 import { useState, useEffect, useCallback } from 'react';
+
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Card from '@mui/material/Card';
@@ -10,18 +12,23 @@ import Tooltip from '@mui/material/Tooltip';
 import TableBody from '@mui/material/TableBody';
 import IconButton from '@mui/material/IconButton';
 import CircularProgress from '@mui/material/CircularProgress';
+
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
+
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useSetState } from 'src/hooks/use-set-state';
+
 import axiosInstance, { endpoints } from 'src/utils/axios';
 import { fIsAfter, fIsBetween } from 'src/utils/format-time';
-import { varAlpha } from 'src/theme/styles';
-import { ORDER_STATUS_OPTIONS } from 'src/_mock';
+
 import { DashboardContent } from 'src/layouts/dashboard';
+import { useTranslate } from 'src/locales';
+import { ORDER_STATUS_OPTIONS } from 'src/_mock';
+import { varAlpha } from 'src/theme/styles';
+
 import { Label } from 'src/components/label';
 import { toast } from 'src/components/snackbar';
-import { useTranslate } from 'src/locales';
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
 import { ConfirmDialog } from 'src/components/custom-dialog';
@@ -37,6 +44,7 @@ import {
   TableSelectedAction,
   TablePaginationCustom,
 } from 'src/components/table';
+
 import { OrderTableRow } from '../order-table-row';
 import { OrderShipDialog } from '../order-ship-dialog';
 import { OrderTableToolbar } from '../order-table-toolbar';
@@ -157,7 +165,7 @@ export function OrderListView() {
       }
     };
     fetchOrders();
-  }, []);
+  }, [t]);
   const dateError = fIsAfter(filters.state.startDate, filters.state.endDate);
   const dataFiltered = applyFilter({
     inputData: tableData,
@@ -178,7 +186,7 @@ export function OrderListView() {
       setTableData(deleteRow);
       table.onUpdatePageDeleteRow(dataInPage.length);
     },
-    [dataInPage.length, table, tableData]
+    [dataInPage.length, table, tableData, t]
   );
   const handleDeleteRows = useCallback(() => {
     const deleteRows = tableData.filter((row) => !table.selected.includes(row.id));
@@ -188,7 +196,7 @@ export function OrderListView() {
       totalRowsInPage: dataInPage.length,
       totalRowsFiltered: dataFiltered.length,
     });
-  }, [dataFiltered.length, dataInPage.length, table, tableData]);
+  }, [dataFiltered.length, dataInPage.length, table, tableData, t]);
   const handleViewRow = useCallback(
     (id: string) => {
       router.push(paths.dashboard.order.details(id));
@@ -242,7 +250,7 @@ export function OrderListView() {
         setIsShipping(false);
       }
     },
-    [selectedOrder, handleCloseShipDialog]
+    [selectedOrder, handleCloseShipDialog, t]
   );
   const handlePayRow = useCallback((order: IOrderItem) => {
     setSelectedOrder(order);
@@ -284,7 +292,7 @@ export function OrderListView() {
         setIsPaying(false);
       }
     },
-    [selectedOrder, handleClosePayDialog]
+    [selectedOrder, handleClosePayDialog, t]
   );
   return (
     <>

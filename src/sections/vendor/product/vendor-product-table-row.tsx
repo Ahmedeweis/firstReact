@@ -14,7 +14,7 @@ import { useBoolean } from 'src/hooks/use-boolean';
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 import { ConfirmDialog } from 'src/components/custom-dialog';
-import { CustomPopover, usePopover } from 'src/components/custom-popover';
+import { usePopover, CustomPopover } from 'src/components/custom-popover';
 
 // ----------------------------------------------------------------------
 
@@ -27,7 +27,7 @@ type Props = {
 };
 
 export function VendorProductTableRow({ row, selected, onSelectRow, onDeleteRow, onEditRow }: Props) {
-    const { name, regular_price, sale_price, stock, publication_status, images } = row;
+    const { name, regular_price, sale_price, images } = row;
 
     const confirm = useBoolean();
 

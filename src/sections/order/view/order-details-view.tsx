@@ -12,11 +12,11 @@ import { useParams } from 'src/routes/hooks';
 
 import axiosInstance, { endpoints } from 'src/utils/axios';
 
-import { ORDER_STATUS_OPTIONS } from 'src/_mock';
 import { DashboardContent } from 'src/layouts/dashboard';
+import { useTranslate } from 'src/locales';
+import { ORDER_STATUS_OPTIONS } from 'src/_mock';
 
 import { toast } from 'src/components/snackbar';
-import { useTranslate } from 'src/locales';
 
 import { OrderShipDialog } from '../order-ship-dialog';
 import { OrderDetailsInfo } from '../order-details-info';
@@ -132,7 +132,7 @@ export function OrderDetailsView({ order: initialOrder }: Props) {
 
       fetchOrderDetails();
     }
-  }, [id, initialOrder]);
+  }, [id, initialOrder, t]);
 
   const handleChangeStatus = useCallback((newValue: string) => {
     setStatus(newValue);
@@ -181,7 +181,7 @@ export function OrderDetailsView({ order: initialOrder }: Props) {
         setIsShipping(false);
       }
     },
-    [id, handleCloseShipDialog]
+    [id, handleCloseShipDialog, t]
   );
 
   const handleOpenPayDialog = useCallback(() => {
@@ -228,7 +228,7 @@ export function OrderDetailsView({ order: initialOrder }: Props) {
         setIsPaying(false);
       }
     },
-    [id, handleClosePayDialog]
+    [id, handleClosePayDialog, t]
   );
 
   if (loading) {

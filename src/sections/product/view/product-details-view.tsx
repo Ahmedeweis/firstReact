@@ -1,24 +1,31 @@
+
 import type { IProductApiItem } from 'src/types/product';
+
 import { useState, useEffect, useCallback } from 'react';
+
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Chip from '@mui/material/Chip';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import Chip from '@mui/material/Chip';
 import CircularProgress from '@mui/material/CircularProgress';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
 import { paths } from 'src/routes/paths';
 import { useParams, useRouter } from 'src/routes/hooks';
-import { useCart } from 'src/hooks/use-cart';
+
 import { useFormatPrice } from 'src/utils/format-price';
 import axiosInstance, { endpoints } from 'src/utils/axios';
+
+import { useTranslate } from 'src/locales';
+
+import { useCart } from 'src/hooks/use-cart';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { toast } from 'src/components/snackbar';
-import { useTranslate } from 'src/locales';
 import { Iconify } from 'src/components/iconify';
 import { EmptyContent } from 'src/components/empty-content';
 // ----------------------------------------------------------------------
@@ -127,7 +134,7 @@ export function ProductDetailsView() {
     }
     addToCart(product, quantity, selectedColor || undefined, selectedSize || undefined);
     toast.success(`${product.name} ${t('product.details.addedToCart')}`);
-  }, [product, quantity, selectedColor, selectedSize, addToCart]);
+  }, [product, quantity, selectedColor, selectedSize, addToCart, t]);
   if (loading) {
     return (
       <DashboardContent>

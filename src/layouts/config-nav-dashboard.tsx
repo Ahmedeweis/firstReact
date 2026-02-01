@@ -120,15 +120,7 @@ export const navVendorData = [
   {
     items: [
       { title: 'vendor.sidebar.overview', path: paths.dashboard.root, icon: ICONS.dashboard },
-      {
-        title: 'vendor.sidebar.products',
-        path: paths.dashboard.vendor.product.root,
-        icon: ICONS.product,
-        children: [
-          { title: 'vendor.sidebar.list', path: paths.dashboard.vendor.product.root },
-          { title: 'vendor.sidebar.create', path: paths.dashboard.vendor.product.new },
-        ],
-      },
+
       {
         title: 'vendor.sidebar.orders',
         path: paths.dashboard.vendor.order.root,

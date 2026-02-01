@@ -7,8 +7,7 @@ import type {
 import useSWR from 'swr';
 import { useMemo } from 'react';
 
-import axiosInstance from 'src/utils/axios';
-import { endpoints, fetcher } from 'src/utils/axios';
+import axiosInstance, { fetcher, endpoints } from 'src/utils/axios';
 
 import { toast } from 'src/components/snackbar';
 

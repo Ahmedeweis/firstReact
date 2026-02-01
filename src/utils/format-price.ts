@@ -20,7 +20,7 @@ export function formatPrice(
   if (price == null || price === '') return '0.00';
 
   const numPrice = typeof price === 'string' ? parseFloat(price) : price;
-  if (isNaN(numPrice)) return '0.00';
+  if (Number.isNaN(numPrice)) return '0.00';
 
   const decimals = options?.decimals ?? 2;
   const formattedPrice = numPrice.toFixed(decimals);

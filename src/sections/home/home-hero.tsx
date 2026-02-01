@@ -6,15 +6,11 @@ import { useRef, useState } from 'react';
 import { m, useScroll, useSpring, useTransform, useMotionValueEvent } from 'framer-motion';
 
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import { useTheme } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-
-import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
-
+import { useTheme } from '@mui/material/styles';
 import { useResponsive } from 'src/hooks/use-responsive';
 
 import { textGradient } from 'src/theme/styles';
@@ -40,7 +36,7 @@ export function HomeHero({ sx, ...other }: StackProps) {
 
   const y1 = useTransformY(scroll.scrollY, distance * -7);
   const y2 = useTransformY(scroll.scrollY, distance * -6);
-  const y4 = useTransformY(scroll.scrollY, distance * -4);
+  // const y4 = useTransformY(scroll.scrollY, distance * -4);
 
   const opacity: MotionValue<number> = useTransform(
     scroll.scrollY,
@@ -65,7 +61,7 @@ export function HomeHero({ sx, ...other }: StackProps) {
         }}
       >
         <Box component="span" sx={{ width: 1, opacity: 0.24 }}>
-        Hello
+          Hello
         </Box>
         Welcome to
         <Box
@@ -107,40 +103,42 @@ export function HomeHero({ sx, ...other }: StackProps) {
   );
 
 
-  const renderButtons = (
-    <Box display="flex" flexWrap="wrap" justifyContent="center" gap={{ xs: 1.5, sm: 2 }}>
-      <MInview>
-        <Stack alignItems="center" spacing={2.5}>
+  /*
+    const renderButtons = (
+      <Box display="flex" flexWrap="wrap" justifyContent="center" gap={{ xs: 1.5, sm: 2 }}>
+        <MInview>
+          <Stack alignItems="center" spacing={2.5}>
+            <Button
+              component={RouterLink}
+              href={paths.auth.signIn}
+              color="inherit"
+              size="large"
+              variant="contained"
+            >
+                sign in
+  
+            </Button>
+  
+  
+          </Stack>
+        </MInview>
+  
+        {/!* <MInview>
           <Button
-            component={RouterLink}
-            href={paths.auth.signIn}
             color="inherit"
             size="large"
-            variant="contained"
+            variant="outlined"
+            target="_blank"
+            rel="noopener"
+            href={paths.auth.signUp}
+            sx={{ borderColor: 'text.primary' }}
           >
-              sign in
-
+            Create new account
           </Button>
-
-
-        </Stack>
-      </MInview>
-
-      {/* <MInview>
-        <Button
-          color="inherit"
-          size="large"
-          variant="outlined"
-          target="_blank"
-          rel="noopener"
-          href={paths.auth.signUp}
-          sx={{ borderColor: 'text.primary' }}
-        >
-          Create new account
-        </Button>
-      </MInview> */}
-    </Box>
-  );
+        </MInview> *!/}
+      </Box>
+    );
+  */
 
 
   return (

@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
-
 import type { IProductApiItem } from 'src/types/product';
+import { useState, useEffect, useCallback } from 'react';
 
 import { getStorage, setStorage } from './use-local-storage';
 
@@ -24,7 +23,7 @@ export function useCart() {
 
   // Load cart from localStorage on mount
   useEffect(() => {
-    const savedCart = getStorage<ICartItem[]>(CART_STORAGE_KEY);
+    const savedCart = getStorage(CART_STORAGE_KEY) as ICartItem[];
     if (savedCart && Array.isArray(savedCart)) {
       setCartItems(savedCart);
     }
@@ -107,24 +106,24 @@ export function useCart() {
     setStorage(CART_STORAGE_KEY, []);
   }, []);
 
-  const getCartItemCount = useCallback(() => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
-  }, [cartItems]);
+  const getCartItemCount = useCallback(
+    () => cartItems.reduce((total, item) => total + item.quantity, 0),
+    [cartItems]
+  );
 
-  const getCartTotal = useCallback(() => {
-    return cartItems.reduce((total, item) => {
+  const getCartTotal = useCallback(() =>
+    cartItems.reduce((total, item) => {
       const price = parseFloat(item.product.sale_price || item.product.regular_price);
       return total + price * item.quantity;
-    }, 0);
-  }, [cartItems]);
+    }, 0),
+    [cartItems]);
 
   const isInCart = useCallback(
-    (productId: number, color?: string, size?: string) => {
-      return cartItems.some(
+    (productId: number, color?: string, size?: string) =>
+      cartItems.some(
         (item) =>
           item.id === productId && item.selectedColor === color && item.selectedSize === size
-      );
-    },
+      ),
     [cartItems]
   );
 

@@ -22,7 +22,7 @@ import { useBoolean } from 'src/hooks/use-boolean';
 
 import { fetcher, endpoints } from 'src/utils/axios';
 
-import { fDate } from 'src/utils/format-time';
+// import { fDate } from 'src/utils/format-time';
 import { useTranslate } from 'src/locales';
 
 import { Iconify } from 'src/components/iconify';
@@ -145,6 +145,7 @@ export function CenteredSignUpClientView() {
         currency_id: formData.currency_id.value,
         // Explicitly include referral_code
         referral_code: formData.referral_code || '',
+        birth_date: formData.birth_date ? String(formData.birth_date) : undefined
       });
       navigate(paths.auth.verify, { state: { email: formData.email } });
     } catch (formError) {

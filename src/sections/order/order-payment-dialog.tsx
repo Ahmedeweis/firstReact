@@ -1,6 +1,6 @@
 import type { IOrderItem } from 'src/types/order';
 
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 
 import { LoadingButton } from '@mui/lab';
 import {
@@ -12,19 +12,19 @@ import {
   MenuItem,
   TextField,
   Typography,
-  DialogTitle,
-  DialogActions,
-  DialogContent,
   RadioGroup,
-  FormControlLabel,
+  DialogTitle,
   Radio,
+  DialogContent,
+  DialogActions,
+  FormControlLabel,
 } from '@mui/material';
 
-import { useGetPaymentMethods } from 'src/actions/client/payment-methods';
 import { useFormatPrice } from 'src/utils/format-price';
+import { useGetPaymentMethods } from 'src/actions/client/payment-methods';
 
-import { Iconify } from 'src/components/iconify';
 import { useTranslate } from 'src/locales';
+import { Iconify } from 'src/components/iconify';
 
 type Props = {
   open: boolean;

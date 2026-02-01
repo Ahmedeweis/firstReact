@@ -17,18 +17,20 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
-import axiosInstance, { endpoints } from 'src/utils/axios';
-
-import { DashboardContent } from 'src/layouts/dashboard';
-
-import { toast } from 'src/components/snackbar';
-import { useTranslate } from 'src/locales';
-import { Iconify } from 'src/components/iconify';
-import { EmptyContent } from 'src/components/empty-content';
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useCart } from 'src/hooks/use-cart';
 import { useDebounce } from 'src/hooks/use-debounce';
+
 import { useFormatPrice } from 'src/utils/format-price';
+import axiosInstance, { endpoints } from 'src/utils/axios';
+
+import { useTranslate } from 'src/locales';
+import { DashboardContent } from 'src/layouts/dashboard';
+
+import { toast } from 'src/components/snackbar';
+import { Iconify } from 'src/components/iconify';
+import { EmptyContent } from 'src/components/empty-content';
+
 import ProductFilters from '../product-filters';
 
 // ----------------------------------------------------------------------
@@ -175,14 +177,12 @@ export function ProductShopView() {
         setLoading(false);
       }
     },
-    [debouncedSearch, filters.category_id, filters.price_min, filters.price_max]
+    [debouncedSearch, filters.category_id, filters.price_min, filters.price_max, t]
   );
 
   // Reset to page 1 when filters change (except page itself)
   useEffect(() => {
-    if (page !== 1) {
-      setPage(1);
-    }
+    setPage(1);
   }, [debouncedSearch, filters.category_id, filters.price_min, filters.price_max]);
 
   useEffect(() => {
@@ -212,7 +212,7 @@ export function ProductShopView() {
       addToCart(product, 1);
       toast.success(`${product.name} ${t('product.shop.addedToCart')}`);
     },
-    [addToCart]
+    [addToCart, t]
   );
 
 

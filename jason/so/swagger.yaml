@@ -1,0 +1,1842 @@
+openapi: 3.0.0
+info:
+  title: retail-international-network-api
+  description: ''
+  version: 1.0.0
+servers:
+  - url: https://smart-field-evaluation-system.smartleadtech.com/api
+    description: Base URL
+paths:
+  /auth/user/login:
+    post:
+      summary: Login
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: investor@app.com
+                password: password
+  /auth/user/register:
+    post:
+      summary: Register
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: "{\r\n    \"name\": \"John\",\r\n    \"last_name\": \"Doe\",\r\n    \"email\": \"has.san.gomaa.dev@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"password_confirmation\": \"12345678\",\r\n    \"type\": \"vendor\", // vendor || client\r\n    \"gender\": \"male\", // male || female\r\n    \"country_id\": 1,\r\n    \"nationality_id\": 1,\r\n    \"currency_id\": 3,\r\n    \"phone\": \"+1234567890\",\r\n    \"national_id\": \"A123456789\",\r\n    \"birth_date\": \"1995-06-15\"\r\n}"
+  /auth/verifyToken:
+    post:
+      summary: Verify Email
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: "{\r\n    \"email\": \"ha.s.san.go.maa.dev@gmail.com\",\r\n    \"token\": \"111111\"// as long as app in dev the token will be the same : 111111\r\n}"
+  /auth/resend-verification:
+    post:
+      summary: Resend Verification Email
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: user@example.com
+  /auth/resend-otp:
+    post:
+      summary: Send Password Reset OTP
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: hassan.gomaa.dev@gmail.com
+  /auth/reset-password:
+    post:
+      summary: Reset Password
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: "{\r\n    \"email\": \"hassan.gomaa.dev@gmail.com\",\r\n    \"token\": \"111111\",// as long as app in dev the token will be the same : 111111\r\n    \"password\": \"newpassword123\",\r\n    \"password_confirmation\": \"newpassword123\"\r\n}"
+  /auth/user/logout:
+    post:
+      summary: Logout
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /auth/user/upload-avatar:
+    post:
+      summary: uploadAvatar
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                avatar:
+                  type: string
+  /auth/user/addresses:
+    post:
+      summary: storeAddress
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                address: 1234 Main Street, Apt 5B
+                state_id: 12
+                country_id: 1
+                city_id: 45
+                post_code: '10001'
+                latitude: 40.712776
+                longitude: -74.005974
+    get:
+      summary: getAddresses
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /auth/user/profile:
+    get:
+      summary: Profile
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /auth/admin/addresses:
+    post:
+      summary: storeAddress Copy
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                address: 1234 Main Street, Apt 5B
+                state_id: 12
+                country_id: 1
+                city_id: 45
+                post_code: '10001'
+                latitude: 40.712776
+                longitude: -74.005974
+  /vendor/products:
+    get:
+      summary: INDEX
+      tags:
+        - PRODUCT
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: STORE
+      tags:
+        - Successor
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name[en]:
+                  type: string
+                  default: WirelessMouse
+                name[ar]:
+                  type: string
+                  default: ماوسلاسلكي
+                description[en]:
+                  type: string
+                  default: Ahigh-precisionwirelessmousewithergonomicdesign.
+                description[ar]:
+                  type: string
+                  default: ماوسلاسلكيعاليدقةمعتصميممريح.
+                sub_description[en]:
+                  type: string
+                  default: Fastresponse,lightweight,anddurable.
+                sub_description[ar]:
+                  type: string
+                  default: استجابةسريعة،خفيفالوزن،ومتين.
+                content[en]:
+                  type: string
+                  default: >-
+                    Thismousefeaturesanadvancedopticalsensorandseamlessconnectivity.
+                content[ar]:
+                  type: string
+                  default: يتميزهذاالماوسبمستشعربصريمتقدمواتصالسلس.
+                sku:
+                  type: string
+                  default: SKU-WM-177232
+                code:
+                  type: string
+                  default: WM-560232
+                quantity:
+                  type: string
+                  default: '100'
+                stock:
+                  type: string
+                  default: '100'
+                stock_status:
+                  type: string
+                  default: in_stock
+                tax_type:
+                  type: string
+                  default: exclusive
+                tax_percentage:
+                  type: string
+                  default: '5.00'
+                colors[0]:
+                  type: string
+                  default: '#000000'
+                colors[1]:
+                  type: string
+                  default: '#FFFFFF'
+                colors[2]:
+                  type: string
+                  default: '#FF0000'
+                sizes[0]:
+                  type: string
+                  default: S
+                sizes[1]:
+                  type: string
+                  default: M
+                sizes[2]:
+                  type: string
+                  default: L
+                tags[0]:
+                  type: string
+                  default: wireless
+                tags[1]:
+                  type: string
+                  default: gaming
+                tags[2]:
+                  type: string
+                  default: mouse
+                tags[3]:
+                  type: string
+                  default: USB
+                required_shipping:
+                  type: string
+                  default: '1'
+                length_class:
+                  type: string
+                  default: cm
+                length:
+                  type: string
+                  default: '12.5'
+                width:
+                  type: string
+                  default: '6.0'
+                height:
+                  type: string
+                  default: '3.5'
+                weight:
+                  type: string
+                  default: '0.3'
+                related_products[0]:
+                  type: string
+                  default: '2'
+                related_products[1]:
+                  type: string
+                  default: '5'
+                related_products[2]:
+                  type: string
+                  default: '7'
+                priority:
+                  type: string
+                  default: '1'
+                regular_price:
+                  type: string
+                  default: '29.99'
+                sale_price:
+                  type: string
+                  default: '24.99'
+                date_start:
+                  type: string
+                  default: '2025-02-20'
+                is_published:
+                  type: string
+                  default: '0'
+                category_id:
+                  type: string
+                  default: '7'
+                manufacturer_id:
+                  type: string
+                  default: '8'
+                priority[0]:
+                  type: string
+                  default: '1'
+                files[0]:
+                  type: string
+  /vendor/products/2:
+    get:
+      summary: SHOW
+      tags:
+        - Successor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /vendor/products/13:
+    post:
+      summary: UPDATE
+      tags:
+        - Successor
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name[en]:
+                  type: string
+                  default: WirelessMouse
+                name[ar]:
+                  type: string
+                  default: ماوسلاسلكي
+                description[en]:
+                  type: string
+                  default: Ahigh-precisionwirelessmousewithergonomicdesign.
+                description[ar]:
+                  type: string
+                  default: ماوسلاسلكيعاليدقةمعتصميممريح.
+                sub_description[en]:
+                  type: string
+                  default: Fastresponse,lightweight,anddurable.
+                sub_description[ar]:
+                  type: string
+                  default: استجابةسريعة،خفيفالوزن،ومتين.
+                content[en]:
+                  type: string
+                  default: >-
+                    Thismousefeaturesanadvancedopticalsensorandseamlessconnectivity.
+                content[ar]:
+                  type: string
+                  default: يتميزهذاالماوسبمستشعربصريمتقدمواتصالسلس.
+                sku:
+                  type: string
+                  default: SKU-WM-177232
+                code:
+                  type: string
+                  default: WM-560232
+                quantity:
+                  type: string
+                  default: '100'
+                stock:
+                  type: string
+                  default: '100'
+                stock_status:
+                  type: string
+                  default: in_stock
+                tax_type:
+                  type: string
+                  default: exclusive
+                tax_percentage:
+                  type: string
+                  default: '5.00'
+                colors[0]:
+                  type: string
+                  default: '#000000'
+                colors[1]:
+                  type: string
+                  default: '#FFFFFF'
+                colors[2]:
+                  type: string
+                  default: '#FF0000'
+                sizes[0]:
+                  type: string
+                  default: S
+                sizes[1]:
+                  type: string
+                  default: M
+                sizes[2]:
+                  type: string
+                  default: L
+                tags[0]:
+                  type: string
+                  default: wireless
+                tags[1]:
+                  type: string
+                  default: gaming
+                tags[2]:
+                  type: string
+                  default: mouse
+                tags[3]:
+                  type: string
+                  default: USB
+                required_shipping:
+                  type: string
+                  default: '1'
+                length_class:
+                  type: string
+                  default: cm
+                length:
+                  type: string
+                  default: '12.5'
+                width:
+                  type: string
+                  default: '6.0'
+                height:
+                  type: string
+                  default: '3.5'
+                weight:
+                  type: string
+                  default: '0.3'
+                related_products[0]:
+                  type: string
+                  default: '2'
+                related_products[1]:
+                  type: string
+                  default: '5'
+                related_products[2]:
+                  type: string
+                  default: '7'
+                priority:
+                  type: string
+                  default: '1'
+                regular_price:
+                  type: string
+                  default: '29.99'
+                sale_price:
+                  type: string
+                  default: '24.99'
+                date_start:
+                  type: string
+                  default: '2025-02-20'
+                is_published:
+                  type: string
+                  default: '0'
+                category_id:
+                  type: string
+                  default: '7'
+                manufacturer_id:
+                  type: string
+                  default: '8'
+                priority[0]:
+                  type: string
+                  default: '1'
+                files[0]:
+                  type: string
+    delete:
+      summary: DELETE
+      tags:
+        - Successor
+      responses:
+        '200':
+          description: Successful response
+  /vendor/successors:
+    get:
+      summary: Get Successor
+      tags:
+        - Vendor Successors
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: Add/Update Successor
+      tags:
+        - Vendor Successors
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Ahmed mohamed
+                nationality: Saudi
+                phone: '0643313464332'
+                proof_type: passport
+                proof_id: '4461313465465865635547'
+                kinship: son
+                avatar: null
+  /vendor/orders:
+    get:
+      summary: INDEX
+      tags:
+        - ORDER Copy
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /vendor/orders/1:
+    get:
+      summary: SHOW
+      tags:
+        - ORDER Copy
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /vendor/orders/3/payments:
+    get:
+      summary: Order/payments
+      tags:
+        - ORDER Copy
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /vendor/orders/3/shipments:
+    get:
+      summary: Order/shipments
+      tags:
+        - ORDER Copy
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /vendor/orders/3:
+    post:
+      summary: UPDATE
+      tags:
+        - ORDER Copy
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                status: completed
+                shipping_method: DHL
+                shipping_address:
+                  street: 123 Main Street
+                  city: New York
+                  state: NY
+                  country: United States
+                  postal_code: '10001'
+                notes: >-
+                  Order has been processed and shipped successfully. Customer
+                  requested express delivery.
+  /vendor/referrals:
+    get:
+      summary: List All Members
+      tags:
+        - Vendor Referrals
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /vendor/referrals/tree:
+    get:
+      summary: Get Referral Tree
+      tags:
+        - Vendor Referrals
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /api/vendor/successors/{successor}:
+    put:
+      summary: Update Successor
+      tags:
+        - Vendor Successors
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Ahmed mohamed Updated
+                nationality: Saudi
+                phone: '0643313464332'
+                proof_type: passport
+                proof_id: '4461313465465865635547'
+                kinship: son
+                avatar: null
+    delete:
+      summary: Delete Successor
+      tags:
+        - Vendor Successors
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /orders:
+    post:
+      summary: Place an Order
+      tags:
+        - ORDERS
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                vendor_id: 2
+                items:
+                  - product_id: 10
+                    quantity: 2
+                  - product_id: 12
+                    quantity: 1
+                payment_method: myfatoorah
+                shipping_method: DHL
+                shipping_address:
+                  address: 123 Main St
+                  city: Cairo
+                  state: Cairo
+                  country: Egypt
+                  zip: '12345'
+                notes: Please deliver between 9am-5pm.
+    get:
+      summary: Get My Orders
+      tags:
+        - ORDERS
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /orders/22/checkout:
+    post:
+      summary: Checkout the Order
+      tags:
+        - ORDERS
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties: {}
+  /orders/22/pay:
+    post:
+      summary: Pay for the Order
+      tags:
+        - ORDERS
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                payment_method:
+                  type: string
+                  default: cash_on_delivery
+  /orders/22/ship:
+    post:
+      summary: Ship the Order
+      tags:
+        - ORDERS
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                shipping_method:
+                  type: string
+                  default: DHL
+  /orders/22:
+    get:
+      summary: Get My Orders -SHOW
+      tags:
+        - ORDERS
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /products:
+    get:
+      summary: products
+      tags:
+        - Core
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /vendors:
+    get:
+      summary: Vendors
+      tags:
+        - Core
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /categories:
+    get:
+      summary: categories
+      tags:
+        - Core
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /auth/user/payment-methods:
+    get:
+      summary: List All Payment Methods
+      tags:
+        - Client Payment Methods
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: Add New Payment Method
+      tags:
+        - Client Payment Methods
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: John Doe
+                card_number: '4111111111111111'
+                expiry: 12/25
+                cvc: '123'
+                type: visa
+  /auth/user/payment-methods/{id}:
+    delete:
+      summary: Delete Payment Method
+      tags:
+        - Client Payment Methods
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /investor/payment-methods:
+    get:
+      summary: payment-methods
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: payment-methods
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                card_number:
+                  type: string
+                  default: '5555555555554444'
+                expiry:
+                  type: string
+                  default: 09/24
+                type:
+                  type: string
+                  default: bank_transfer
+                name:
+                  type: string
+                  default: ooooooooo
+                cvc:
+                  type: string
+                  default: '123'
+  /investor/payment-methods/2:
+    delete:
+      summary: payment-methods
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /investor/dashboard:
+    get:
+      summary: dashboard
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /investor/transactions:
+    get:
+      summary: transactions
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /investor/contact-us:
+    get:
+      summary: contact-us
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: contact-us
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                subject:
+                  type: string
+                  default: hello
+                message:
+                  type: string
+                  default: world
+  /investor/profit-requests:
+    get:
+      summary: profit-requests
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: profit-requests
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  default: needs money!
+                amount:
+                  type: string
+                  default: '100'
+  /investor/wallet/charge:
+    post:
+      summary: wallet/charge
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+                  default: '100'
+                payment_type:
+                  type: string
+                  default: mastercard
+                payment_method_id:
+                  type: string
+                  default: '1'
+                iban:
+                  type: string
+                  default: '11111111'
+                swift_code:
+                  type: string
+                  default: '111'
+                name:
+                  type: string
+                  default: '1111111'
+  /investor/wallet/requests:
+    get:
+      summary: wallet/requests
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /investor/wallet/withdraw:
+    post:
+      summary: wallet/withdraw
+      tags:
+        - Investor
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: string
+                  default: '100'
+                payment_method_id:
+                  type: string
+                  default: '1'
+                iban:
+                  type: string
+                  default: ''
+                swift_code:
+                  type: string
+                  default: ''
+                payment_type:
+                  type: string
+                  default: visa
+  /admin/login:
+    post:
+      summary: Login
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: admin@app.com
+                password: '12345678'
+  /admin/logout:
+    post:
+      summary: Logout
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /admin/profile:
+    get:
+      summary: Profile
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /admin/products:
+    get:
+      summary: INDEX
+      tags:
+        - PRODUCT
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: STORE
+      tags:
+        - PRODUCT
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name[en]:
+                  type: string
+                  default: WirelessMouse
+                name[ar]:
+                  type: string
+                  default: ماوسلاسلكي
+                description[en]:
+                  type: string
+                  default: Ahigh-precisionwirelessmousewithergonomicdesign.
+                description[ar]:
+                  type: string
+                  default: ماوسلاسلكيعاليدقةمعتصميممريح.
+                sub_description[en]:
+                  type: string
+                  default: Fastresponse,lightweight,anddurable.
+                sub_description[ar]:
+                  type: string
+                  default: استجابةسريعة،خفيفالوزن،ومتين.
+                content[en]:
+                  type: string
+                  default: >-
+                    Thismousefeaturesanadvancedopticalsensorandseamlessconnectivity.
+                content[ar]:
+                  type: string
+                  default: يتميزهذاالماوسبمستشعربصريمتقدمواتصالسلس.
+                sku:
+                  type: string
+                  default: SKU-WM-177232
+                code:
+                  type: string
+                  default: WM-560232
+                quantity:
+                  type: string
+                  default: '100'
+                stock:
+                  type: string
+                  default: '100'
+                stock_status:
+                  type: string
+                  default: in_stock
+                tax_type:
+                  type: string
+                  default: exclusive
+                tax_percentage:
+                  type: string
+                  default: '5.00'
+                colors[0]:
+                  type: string
+                  default: '#000000'
+                colors[1]:
+                  type: string
+                  default: '#FFFFFF'
+                colors[2]:
+                  type: string
+                  default: '#FF0000'
+                sizes[0]:
+                  type: string
+                  default: S
+                sizes[1]:
+                  type: string
+                  default: M
+                sizes[2]:
+                  type: string
+                  default: L
+                tags[0]:
+                  type: string
+                  default: wireless
+                tags[1]:
+                  type: string
+                  default: gaming
+                tags[2]:
+                  type: string
+                  default: mouse
+                tags[3]:
+                  type: string
+                  default: USB
+                required_shipping:
+                  type: string
+                  default: '1'
+                length_class:
+                  type: string
+                  default: cm
+                length:
+                  type: string
+                  default: '12.5'
+                width:
+                  type: string
+                  default: '6.0'
+                height:
+                  type: string
+                  default: '3.5'
+                weight:
+                  type: string
+                  default: '0.3'
+                related_products[0]:
+                  type: string
+                  default: '2'
+                related_products[1]:
+                  type: string
+                  default: '5'
+                related_products[2]:
+                  type: string
+                  default: '7'
+                priority:
+                  type: string
+                  default: '1'
+                regular_price:
+                  type: string
+                  default: '29.99'
+                sale_price:
+                  type: string
+                  default: '24.99'
+                date_start:
+                  type: string
+                  default: '2025-02-20'
+                is_published:
+                  type: string
+                  default: '0'
+                category_id:
+                  type: string
+                  default: '3'
+                manufacturer_id:
+                  type: string
+                  default: '1'
+                priority[0]:
+                  type: string
+                  default: '1'
+                files[0]:
+                  type: string
+  /admin/products/2:
+    get:
+      summary: SHOW
+      tags:
+        - PRODUCT
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: UPDATE
+      tags:
+        - PRODUCT
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name[en]:
+                  type: string
+                  default: WirelessMouse
+                name[ar]:
+                  type: string
+                  default: ماوسلاسلكي
+                description[en]:
+                  type: string
+                  default: Ahigh-precisionwirelessmousewithergonomicdesign.
+                description[ar]:
+                  type: string
+                  default: ماوسلاسلكيعاليدقةمعتصميممريح.
+                sub_description[en]:
+                  type: string
+                  default: Fastresponse,lightweight,anddurable.
+                sub_description[ar]:
+                  type: string
+                  default: استجابةسريعة،خفيفالوزن،ومتين.
+                content[en]:
+                  type: string
+                  default: >-
+                    Thismousefeaturesanadvancedopticalsensorandseamlessconnectivity.
+                content[ar]:
+                  type: string
+                  default: يتميزهذاالماوسبمستشعربصريمتقدمواتصالسلس.
+                sku:
+                  type: string
+                  default: SKU-WM-17777
+                code:
+                  type: string
+                  default: WM-560800
+                quantity:
+                  type: string
+                  default: '100'
+                stock:
+                  type: string
+                  default: '100'
+                stock_status:
+                  type: string
+                  default: in_stock
+                tax_type:
+                  type: string
+                  default: exclusive
+                tax_percentage:
+                  type: string
+                  default: '5.00'
+                colors[0]:
+                  type: string
+                  default: '#000000'
+                colors[1]:
+                  type: string
+                  default: '#FFFFFF'
+                colors[2]:
+                  type: string
+                  default: '#FF0000'
+                sizes[0]:
+                  type: string
+                  default: S
+                sizes[1]:
+                  type: string
+                  default: M
+                sizes[2]:
+                  type: string
+                  default: L
+                tags[0]:
+                  type: string
+                  default: wireless
+                tags[1]:
+                  type: string
+                  default: gaming
+                tags[2]:
+                  type: string
+                  default: mouse
+                tags[3]:
+                  type: string
+                  default: USB
+                required_shipping:
+                  type: string
+                  default: '1'
+                length_class:
+                  type: string
+                  default: cm
+                length:
+                  type: string
+                  default: '12.5'
+                width:
+                  type: string
+                  default: '6.0'
+                height:
+                  type: string
+                  default: '3.5'
+                weight:
+                  type: string
+                  default: '0.3'
+                related_products[0]:
+                  type: string
+                  default: '2'
+                related_products[1]:
+                  type: string
+                  default: '5'
+                related_products[2]:
+                  type: string
+                  default: '7'
+                priority:
+                  type: string
+                  default: '1'
+                regular_price:
+                  type: string
+                  default: '29.99'
+                sale_price:
+                  type: string
+                  default: '24.99'
+                date_start:
+                  type: string
+                  default: '2025-02-20'
+                is_published:
+                  type: string
+                  default: '0'
+                category_id:
+                  type: string
+                  default: '3'
+                manufacturer_id:
+                  type: string
+                  default: '1'
+                priority[0]:
+                  type: string
+                  default: '1'
+                files[0]:
+                  type: string
+  /admin/products/3:
+    delete:
+      summary: DELETE
+      tags:
+        - PRODUCT
+      responses:
+        '200':
+          description: Successful response
+  /admin/orders:
+    get:
+      summary: INDEX
+      tags:
+        - ORDER
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: STORE
+      tags:
+        - ORDER
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: "{\r\n  \"vendor_id\": 2,\r\n  \"client_id\": 3,\r\n  \"items\": [\r\n    {\r\n      \"product_id\": 10,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"product_id\": 12,\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n  \"payment_method\": \"myfatoorah\",         // Enum: \"card\", \"cash_on_delivery\", \"myfatoorah\"\r\n  \"shipping_method\": \"DHL\",               // Enum: \"DHL\", \"FedEx\", \"UPS\", \"HSL\"\r\n  \"shipping_address\": {\r\n    \"address\": \"123 Main St\",\r\n    \"city\": \"Cairo\",\r\n    \"state\": \"Cairo\",\r\n    \"country\": \"Egypt\",\r\n    \"zip\": \"12345\"\r\n  },\r\n  \"notes\": \"Please deliver between 9am-5pm.\"\r\n}"
+  /admin/orders/1:
+    get:
+      summary: SHOW
+      tags:
+        - ORDER
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: UPDATE
+      tags:
+        - ORDER
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example: "{\r\n  \"vendor_id\": 2,\r\n  \"client_id\": 5,\r\n  \"items\": [\r\n    {\r\n      \"product_id\": 10,\r\n      \"quantity\": 2\r\n    },\r\n    {\r\n      \"product_id\": 12,\r\n      \"quantity\": 1\r\n    }\r\n  ],\r\n  \"payment_method\": \"myfatoorah\",         // Enum: \"card\", \"cash_on_delivery\", \"myfatoorah\"\r\n  \"shipping_method\": \"DHL\",               // Enum: \"DHL\", \"FedEx\", \"UPS\", \"HSL\"\r\n  \"shipping_address\": {\r\n    \"address\": \"123 Main St\",\r\n    \"city\": \"Cairo\",\r\n    \"state\": \"Cairo\",\r\n    \"country\": \"Egypt\",\r\n    \"zip\": \"12345\"\r\n  },\r\n  \"notes\": \"Please deliver between 9am-5pm.\"\r\n}"
+  /admin/orders/3:
+    delete:
+      summary: DELETE
+      tags:
+        - ORDER
+      responses:
+        '200':
+          description: Successful response
+  /admin/categories:
+    get:
+      summary: INDEX
+      tags:
+        - CATEGORY
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: STORE
+      tags:
+        - CATEGORY
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name[en]:
+                  type: string
+                  default: Electronics
+                name[ar]:
+                  type: string
+                  default: الإلكترونيات
+                description[en]:
+                  type: string
+                  default: All kinds of electronic devices and gadgets.
+                description[ar]:
+                  type: string
+                  default: جميع أنواع الأجهزة الإلكترونية والأدوات.
+                status:
+                  type: string
+                  default: active
+                file:
+                  type: string
+                parent_id:
+                  type: string
+                  default: '63'
+  /admin/categories/1:
+    get:
+      summary: SHOW
+      tags:
+        - CATEGORY
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /admin/categories/63:
+    post:
+      summary: PUT
+      tags:
+        - CATEGORY
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name[en]:
+                  type: string
+                  default: Electronics
+                name[ar]:
+                  type: string
+                  default: الإلكترونيات
+                description[en]:
+                  type: string
+                  default: All kinds of electronic devices and gadgets.
+                description[ar]:
+                  type: string
+                  default: جميع أنواع الأجهزة الإلكترونية والأدوات.
+                status:
+                  type: string
+                  default: active
+                file:
+                  type: string
+                parent_id:
+                  type: string
+                  default: '2'
+  /admin/categories/3:
+    delete:
+      summary: DELETE
+      tags:
+        - CATEGORY
+      responses:
+        '200':
+          description: Successful response
+  /admin/manufacturers:
+    get:
+      summary: INDEX
+      tags:
+        - MANUFACTURER
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: STORE
+      tags:
+        - MANUFACTURER
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name[en]:
+                  type: string
+                  default: Electronics
+                name[ar]:
+                  type: string
+                  default: الإلكترونيات
+                description[en]:
+                  type: string
+                  default: All kinds of electronic devices and gadgets.
+                description[ar]:
+                  type: string
+                  default: جميع أنواع الأجهزة الإلكترونية والأدوات.
+                file:
+                  type: string
+  /admin/manufacturers/1:
+    get:
+      summary: SHOW
+      tags:
+        - MANUFACTURER
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: PUT
+      tags:
+        - MANUFACTURER
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name[en]:
+                  type: string
+                  default: Electronics
+                name[ar]:
+                  type: string
+                  default: الإلكترونيات
+                description[en]:
+                  type: string
+                  default: All kinds of electronic devices and gadgets.
+                description[ar]:
+                  type: string
+                  default: جميع أنواع الأجهزة الإلكترونية والأدوات.
+                file:
+                  type: string
+  /admin/manufacturers/3:
+    delete:
+      summary: DELETE
+      tags:
+        - MANUFACTURER
+      responses:
+        '200':
+          description: Successful response
+  /admin/users:
+    get:
+      summary: INDEX
+      tags:
+        - USER
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: STORE
+      tags:
+        - USER
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: John
+                last_name: Doe
+                email: john.doe@example.com
+                password: securepassword
+                password_confirmation: securepassword
+                birth_date: '1990-05-15'
+                phone: '+123456789'
+                type: client
+                status: active
+                gender: male
+                country_id: 1
+                nationality_id: 1
+                currency_id: 1
+                national_id: '1234567890'
+                sponser_id: '789654123'
+  /admin/users/1:
+    get:
+      summary: SHOW
+      tags:
+        - USER
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    put:
+      summary: PUT
+      tags:
+        - USER
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: John
+                last_name: Doe
+                email: john.d2oe@example.com
+                password: securepassword
+                password_confirmation: securepassword
+                birth_date: '1990-05-15'
+                phone: '+123456789'
+                type: client
+                status: active
+                gender: male
+                country_id: 1
+                nationality_id: 1
+                currency_id: 1
+                national_id: '1234567890'
+                sponser_id: '789654123'
+  /admin/users/3:
+    delete:
+      summary: DELETE
+      tags:
+        - USER
+      responses:
+        '200':
+          description: Successful response
+  /admin/admins:
+    get:
+      summary: INDEX
+      tags:
+        - ADMIN
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+    post:
+      summary: STORE
+      tags:
+        - ADMIN
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: John
+                email: john.doe@example.com
+                password: securepassword
+  /admin/admins/4:
+    get:
+      summary: SHOW
+      tags:
+        - ADMIN
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /admin/admins/1:
+    put:
+      summary: PUT
+      tags:
+        - ADMIN
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: John
+                email: john.do1e@example.com
+                password: securepassword
+  /admin/admins/3:
+    delete:
+      summary: DELETE
+      tags:
+        - ADMIN
+      responses:
+        '200':
+          description: Successful response
+  /admin/media/upload-multiple:
+    post:
+      summary: Upload Multiple Media
+      tags:
+        - CRUD
+      responses:
+        '200':
+          description: Successful response
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                mediaable_id:
+                  type: string
+                  default: '51'
+                mediaable_type:
+                  type: string
+                  default: App\Models\Product
+                files[0]:
+                  type: string
+                files[1]:
+                  type: string
+                priority[0]:
+                  type: string
+                  default: '0'
+                priority[1]:
+                  type: string
+                  default: '1'
+  /countries:
+    get:
+      summary: getCountries
+      tags:
+        - Core
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /manufacturers:
+    get:
+      summary: manufacturers
+      tags:
+        - Core
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /products/9:
+    get:
+      summary: products/{id}
+      tags:
+        - Core
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /states:
+    get:
+      summary: getStates
+      tags:
+        - Core
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+  /cities:
+    get:
+      summary: getCities
+      tags:
+        - Core
+      responses:
+        '200':
+          description: Successful response
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

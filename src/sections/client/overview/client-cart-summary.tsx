@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
+// import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
@@ -18,9 +18,9 @@ import { Iconify } from 'src/components/iconify';
 export function ClientCartSummary() {
   const { t } = useTranslate();
   const router = useRouter();
-  const { getCartItemCount, getCartTotal } = useCart();
+  const { getCartItemCount } = useCart();
   const cartCount = getCartItemCount();
-  const cartTotal = getCartTotal();
+  // const cartTotal = getCartTotal();
 
   return (
     <Card

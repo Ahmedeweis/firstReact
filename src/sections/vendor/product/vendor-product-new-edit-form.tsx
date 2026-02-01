@@ -1,26 +1,25 @@
+import useSWR from 'swr';
 import { z as zod } from 'zod';
 import { useMemo } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import useSWR from 'swr';
-
+import LoadingButton from '@mui/lab/LoadingButton';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
-import LoadingButton from '@mui/lab/LoadingButton';
 import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
+import axiosInstance, { fetcher, endpoints } from 'src/utils/axios';
+
 import { toast } from 'src/components/snackbar';
 import { Form, Field, schemaHelper } from 'src/components/hook-form';
-
-import axiosInstance, { endpoints, fetcher } from 'src/utils/axios';
 
 // ----------------------------------------------------------------------
 
@@ -287,8 +286,14 @@ export function VendorProductNewEditForm({ currentProduct }: Props) {
                                 <Field.Text name="name_ar" label="Name (Arabic)" />
                             </Box>
 
-                            <Field.Editor name="description_en" label="Description (English)" sx={{ maxHeight: 300 }} />
-                            <Field.Editor name="description_ar" label="Description (Arabic)" sx={{ maxHeight: 300 }} />
+                            <Stack spacing={1.5}>
+                                <Typography variant="subtitle2">Description (English)</Typography>
+                                <Field.Editor name="description_en" sx={{ maxHeight: 300 }} />
+                            </Stack>
+                            <Stack spacing={1.5}>
+                                <Typography variant="subtitle2">Description (Arabic)</Typography>
+                                <Field.Editor name="description_ar" sx={{ maxHeight: 300 }} />
+                            </Stack>
 
                             <Box rowGap={3} columnGap={2} display="grid" gridTemplateColumns={{ xs: 'repeat(1, 1fr)', sm: 'repeat(2, 1fr)' }}>
                                 <Field.Text name="short_description_en" label="Short Description (English)" multiline rows={3} />

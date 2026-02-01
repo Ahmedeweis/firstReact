@@ -1,7 +1,7 @@
 import { z as zod } from 'zod';
 import { useMemo } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -58,7 +58,6 @@ export function VendorProfileGeneral() {
     });
 
     const {
-        setValue,
         handleSubmit,
         formState: { isSubmitting },
     } = methods;

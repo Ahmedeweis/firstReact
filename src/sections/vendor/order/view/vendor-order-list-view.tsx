@@ -3,9 +3,9 @@ import { useState, useEffect, useCallback } from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
+import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import TableBody from '@mui/material/TableBody';
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -14,7 +14,7 @@ import { useRouter } from 'src/routes/hooks';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
-import axiosInstance, { endpoints } from 'src/utils/axios';
+// import axiosInstance, { endpoints } from 'src/utils/axios';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 
@@ -25,7 +25,7 @@ import { CustomBreadcrumbs } from 'src/components/custom-breadcrumbs';
 import {
     useTable,
     emptyRows,
-    rowInPage,
+
     TableNoData,
     getComparator,
     TableEmptyRows,
@@ -59,31 +59,77 @@ export function VendorOrderListView() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchOrders = async () => {
-            try {
-                setLoading(true);
-                // Using the vendor endpoint
-                const response = await axiosInstance.get(endpoints.vendor.order.list);
-                if (response.data && Array.isArray(response.data.data)) {
-                    // We might need to transform data here if it differs from admin
-                    setTableData(response.data.data);
-                } else {
-                    // Mock data if API is empty or fails for now
-                    setTableData([
-                        { id: '1', orderNumber: '#1001', createdAt: new Date(), status: 'pending', total: 150, customer: { name: 'John Doe' }, items: [{ quantity: 2 }] }
-                    ]);
-                }
-            } catch (error) {
-                console.error('Error fetching orders:', error);
-                setTableData([
-                    { id: '1', orderNumber: '#1001', createdAt: new Date(), status: 'pending', total: 150, customer: { name: 'John Doe' }, items: [{ quantity: 2 }] }
-                ]);
-            } finally {
-                setLoading(false);
+        // Mock data for display purposes
+        const mockData = [
+            {
+                id: '1',
+                orderNumber: '#ORD-1234',
+                createdAt: new Date('2023-11-20T10:30:00'),
+                status: 'completed',
+                totalAmount: 250.00,
+                customer: {
+                    name: 'Ahmed Mohamed',
+                    email: 'ahmed@example.com',
+                    avatarUrl: null
+                },
+                items: [
+                    { name: 'Product A', quantity: 2, price: 50 },
+                    { name: 'Product B', quantity: 1, price: 150 }
+                ],
+                totalQuantity: 3
+            },
+            {
+                id: '2',
+                orderNumber: '#ORD-5678',
+                createdAt: new Date('2023-11-21T14:15:00'),
+                status: 'pending',
+                totalAmount: 120.50,
+                customer: {
+                    name: 'Sarah Johnson',
+                    email: 'sarah@example.com',
+                    avatarUrl: null
+                },
+                items: [
+                    { name: 'Product C', quantity: 1, price: 120.50 }
+                ],
+                totalQuantity: 1
+            },
+            {
+                id: '3',
+                orderNumber: '#ORD-9012',
+                createdAt: new Date('2023-11-22T09:00:00'),
+                status: 'cancelled',
+                totalAmount: 45.00,
+                customer: {
+                    name: 'Khaled Ali',
+                    email: 'khaled@example.com',
+                    avatarUrl: null
+                },
+                items: [
+                    { name: 'Product D', quantity: 3, price: 15 }
+                ],
+                totalQuantity: 3
+            },
+            {
+                id: '4',
+                orderNumber: '#ORD-3456',
+                createdAt: new Date('2023-11-23T16:45:00'),
+                status: 'processing',
+                totalAmount: 340.00,
+                customer: {
+                    name: 'Layla Hassan',
+                    email: 'layla@example.com',
+                    avatarUrl: null
+                },
+                items: [
+                    { name: 'Product E', quantity: 2, price: 170 }
+                ],
+                totalQuantity: 2
             }
-        };
+        ];
 
-        fetchOrders();
+        setTableData(mockData);
+        setLoading(false);
     }, []);
 
     const dataFiltered = applyFilter({
@@ -91,7 +137,7 @@ export function VendorOrderListView() {
         comparator: getComparator(table.order, table.orderBy),
     });
 
-    const dataInPage = rowInPage(dataFiltered, table.page, table.rowsPerPage);
+    // const dataInPage = rowInPage(dataFiltered, table.page, table.rowsPerPage);
 
     const notFound = !dataFiltered.length;
 
@@ -123,7 +169,7 @@ export function VendorOrderListView() {
                         onSelectAllRows={(checked) =>
                             table.onSelectAllRows(
                                 checked,
-                                dataFiltered.map((row) => row.id)
+                                dataFiltered.map((row: any) => row.id)
                             )
                         }
                         action={
@@ -152,7 +198,7 @@ export function VendorOrderListView() {
                                     onSelectAllRows={(checked) =>
                                         table.onSelectAllRows(
                                             checked,
-                                            dataFiltered.map((row) => row.id)
+                                            dataFiltered.map((row: any) => row.id)
                                         )
                                     }
                                 />
@@ -163,7 +209,7 @@ export function VendorOrderListView() {
                                             table.page * table.rowsPerPage,
                                             table.page * table.rowsPerPage + table.rowsPerPage
                                         )
-                                        .map((row) => (
+                                        .map((row: any) => (
                                             <VendorOrderTableRow
                                                 key={row.id}
                                                 row={row}

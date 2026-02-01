@@ -1,14 +1,15 @@
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
+import { useTheme } from '@mui/material/styles';
 
 import { useTranslate } from 'src/locales';
 import { DashboardContent } from 'src/layouts/dashboard';
 
 import { ClientOrderStats } from '../client-order-stats';
 import { ClientTotalSpent } from '../client-total-spent';
+import { ClientCartSummary } from '../client-cart-summary';
 import { ClientRecentOrders } from '../client-recent-orders';
 import { ClientQuickActions } from '../client-quick-actions';
-import { ClientCartSummary } from '../client-cart-summary';
 
 // ----------------------------------------------------------------------
 

@@ -1,23 +1,25 @@
 import useSWR from 'swr';
+
+import Button from '@mui/material/Button';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useTheme } from '@mui/material/styles';
 
-import { useAuthContext } from 'src/auth/hooks';
-import { useTranslate } from 'src/locales';
+import { fetcher, endpoints } from 'src/utils/axios';
+
 import { DashboardContent } from 'src/layouts/dashboard';
-import { endpoints, fetcher } from 'src/utils/axios';
+import { useAuthContext } from 'src/auth/hooks';
 
 import { AppWelcome } from 'src/sections/overview/app/app-welcome';
-import { AppWidgetSummary } from 'src/sections/overview/app/app-widget-summary';
 import { AppNewInvoice } from 'src/sections/overview/app/app-new-invoice';
-import { AppAreaInstalled } from 'src/sections/overview/app/app-area-installed';
+import { AppWidgetSummary } from 'src/sections/overview/app/app-widget-summary';
+// import { AppAreaInstalled } from 'src/sections/overview/app/app-area-installed';
 
 // ----------------------------------------------------------------------
 
 export function OverviewVendorView() {
     const { user } = useAuthContext();
     const theme = useTheme();
-    const { t } = useTranslate();
+    // const { t } = useTranslate();
 
     // 1. Fetch Products (Total count, matching the logic of Product List view which fetches all)
     // The user mentioned "list products is 2" and saw "Inactive" and "Pending" products.
@@ -87,9 +89,9 @@ export function OverviewVendorView() {
                         title={`Welcome back 👋 \n ${user?.name || user?.displayName}`}
                         description="Here's what's happening with your store today. Check your latest status and updates."
                         action={
-                            <button style={{ backgroundColor: theme.palette.primary.main, color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer' }}>
+                            <Button variant="contained" color="primary">
                                 Go Now
-                            </button>
+                            </Button>
                         }
                     />
                 </Grid>
@@ -100,6 +102,7 @@ export function OverviewVendorView() {
                         percent={0}
                         total={totalActiveProducts}
                         chart={{
+                            categories: [],
                             series: [5, 18, 12, 51, 68, 11, 39, 37, 27, 20],
                         }}
                     />
@@ -111,6 +114,7 @@ export function OverviewVendorView() {
                         percent={0}
                         total={totalOrders}
                         chart={{
+                            categories: [],
                             colors: [theme.palette.info.light, theme.palette.info.main],
                             series: [20, 41, 63, 33, 28, 35, 50, 46, 11, 26],
                         }}
@@ -123,6 +127,7 @@ export function OverviewVendorView() {
                         percent={0}
                         total={totalRevenue}
                         chart={{
+                            categories: [],
                             colors: [theme.palette.warning.light, theme.palette.warning.main],
                             series: [8, 9, 31, 8, 16, 37, 8, 33, 46, 31],
                         }}
@@ -135,6 +140,7 @@ export function OverviewVendorView() {
                         percent={0}
                         total={totalClients} // count from referral tree
                         chart={{
+                            categories: [],
                             colors: [theme.palette.error.light, theme.palette.error.main],
                             series: [8, 9, 31, 8, 16, 37, 8, 33, 46, 31],
                         }}

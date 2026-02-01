@@ -151,7 +151,7 @@ export function VendorSuccessorListView() {
                             onSelectAllRows={(checked) =>
                                 table.onSelectAllRows(
                                     checked,
-                                    dataFiltered.map((row) => row.id)
+                                    dataFiltered.map((row: any) => row.id)
                                 )
                             }
                             action={
@@ -180,7 +180,7 @@ export function VendorSuccessorListView() {
                                         onSelectAllRows={(checked) =>
                                             table.onSelectAllRows(
                                                 checked,
-                                                dataFiltered.map((row) => row.id)
+                                                dataFiltered.map((row: any) => row.id)
                                             )
                                         }
                                     />
@@ -191,7 +191,7 @@ export function VendorSuccessorListView() {
                                                 table.page * table.rowsPerPage,
                                                 table.page * table.rowsPerPage + table.rowsPerPage
                                             )
-                                            .map((row) => (
+                                            .map((row: any) => (
                                                 <VendorSuccessorTableRow
                                                     key={row.id}
                                                     row={row}

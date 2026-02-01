@@ -1,16 +1,14 @@
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
-import { useGetPaymentMethods } from 'src/actions/client/payment-methods';
-
 import { useTranslate } from 'src/locales';
+import { useGetPaymentMethods } from 'src/actions/client/payment-methods';
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------

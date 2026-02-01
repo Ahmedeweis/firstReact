@@ -6,10 +6,13 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 
+import { paper, varAlpha } from 'src/theme/styles';
+
 import { useGetClientOrders } from 'src/actions/client/overview';
 import { useFormatPrice } from 'src/utils/format-price';
 
 import { useTranslate } from 'src/locales';
+
 import { Iconify } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------

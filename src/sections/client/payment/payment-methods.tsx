@@ -19,8 +19,8 @@ import { useTranslate } from 'src/locales/use-locales';
 import { deletePaymentMethod, useGetPaymentMethods } from 'src/actions/client/payment-methods';
 
 import { Iconify } from 'src/components/iconify';
-import { ConfirmDialog } from 'src/components/custom-dialog';
 import { EmptyContent } from 'src/components/empty-content';
+import { ConfirmDialog } from 'src/components/custom-dialog';
 
 import { PaymentNewCardDialog } from './payment-new-card-dialog';
 
@@ -74,9 +74,7 @@ export function PaymentMethods() {
     }
   };
 
-  const getPaymentMethodLabel = (type: string) => {
-    return t(`payment.methods.types.${type}`, type);
-  };
+  const getPaymentMethodLabel = (type: string) => t(`payment.methods.types.${type}`, type);
 
   if (paymentMethodsLoading) {
     return (

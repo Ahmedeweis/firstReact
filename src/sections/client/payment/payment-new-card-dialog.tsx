@@ -1,28 +1,33 @@
-import type { DialogProps } from '@mui/material/Dialog';
-import type {
-  PaymentMethodType,
-  CreatePaymentMethodRequest,
-} from 'src/types/client/payment-methods';
-
+import { z as zod } from 'zod';
 import { useState } from 'react';
-
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { LoadingButton } from '@mui/lab';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import InputAdornment from '@mui/material/InputAdornment';
-import { LoadingButton } from '@mui/lab';
+import type { DialogProps } from '@mui/material/Dialog';
 
 import { createPaymentMethod } from 'src/actions/client/payment-methods';
+import axiosInstance, { endpoints } from 'src/utils/axios';
 
 import { useTranslate } from 'src/locales';
+
 import { Iconify } from 'src/components/iconify';
+
+import type {
+  PaymentMethodType,
+  CreatePaymentMethodRequest,
+} from 'src/types/client/payment-methods';
 
 // ----------------------------------------------------------------------
 
