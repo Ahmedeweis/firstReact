@@ -1,0 +1,760 @@
+{
+  "common": {
+    "ok": "موافق",
+    "cancel": "إلغاء"
+  },
+  "auth": {
+    "signUpVendorTitle": "سجّل كبائع",
+    "signUpClientTitle": "سجّل كعميل",
+    "signUpInvestorTitle": "سجّل كمستثمر",
+    "signInTitle": "تسجيل الدخول إلى حسابك",
+    "verifyTitle": "تحقق من بريدك الإلكتروني",
+    "resetPasswordTitle": "إعادة تعيين كلمة المرور",
+    "updatePasswordTitle": "تحديث كلمة المرور",
+    "authValidation": {
+      "emailRequired": "البريد الإلكتروني مطلوب!",
+      "emailInvalid": "يجب أن يكون البريد الإلكتروني صالحًا!",
+      "passwordRequired": "كلمة المرور مطلوبة!",
+      "passwordMinLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل!",
+      "codeRequired": "رمز التحقق مطلوب!",
+      "codeLength": "يجب أن يحتوي الرمز على 6 أحرف على الأقل!",
+      "confirmPasswordRequired": "تأكيد كلمة المرور مطلوب!",
+      "confirmPasswordMatch": "كلمتا المرور غير متطابقتين!",
+      "firstNameRequired": "الاسم الأول مطلوب!",
+      "lastNameRequired": "اسم العائلة مطلوب!",
+      "nationalIdRequired": "رقم الهوية مطلوب!",
+      "phoneNumberRequired": "رقم الهاتف مطلوب!",
+      "countryRequired": "الدولة مطلوبة!",
+      "nationalityRequired": "الجنسية مطلوبة!",
+      "currencyRequired": "العملة مطلوبة!",
+      "phoneNumberInvalid": "يجب أن يكون رقم الهاتف صالحًا!",
+      "nationalIdInvalid": "يجب أن يكون رقم الهوية صالحًا!"
+    },
+    "signInHeader": "تسجيل الدخول إلى حسابك",
+    "createAccountVendor": "إنشاء حساب بائع",
+    "createAccountClient": "إنشاء حساب عميل",
+    "createAccountInvestor": "إنشاء حساب مستثمر",
+    "signInButton": "تسجيل الدخول",
+    "createAccountButton": "إنشاء حساب",
+    "signIn": "تسجيل الدخول",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "haveAccount": "هل لديك حساب؟",
+    "getStarted": "ابدأ الآن",
+    "forgotPassword": "هل نسيت كلمة المرور؟",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "updatePassword": "تحديث كلمة المرور",
+    "requestSentSuccessfully": "تم إرسال الطلب بنجاح!",
+    "requestSentSuccessfullyMessage": "لقد أرسلنا رمز تحقق مكوّن من 6 أرقام إلى بريدك الإلكتروني.\nيرجى إدخال الرمز في المربع أدناه لتأكيد بريدك الإلكتروني.",
+    "dontHaveCode": "لم يصلك رمز؟",
+    "resendCode": "إعادة إرسال الرمز",
+    "backToSignIn": "العودة إلى تسجيل الدخول",
+    "forgotPasswordHeader": "هل نسيت كلمة المرور؟",
+    "forgotPasswordMessage": "يرجى إدخال البريد الإلكتروني المرتبط بحسابك وسنرسل لك رابطًا لإعادة تعيين كلمة المرور.",
+    "sendRequest": "إرسال الطلب",
+    "checkEmail": "يرجى التحقق من بريدك الإلكتروني!",
+    "checkEmailMessage": "لقد أرسلنا رمز تحقق مكوّن من 6 أرقام.\nيرجى إدخاله في المربع أدناه لتأكيد البريد الإلكتروني.",
+    "verify": "تحقق",
+    "firstName": "الاسم الأول",
+    "lastName": "اسم العائلة",
+    "nationalId": "رقم الهوية",
+    "phoneNumber": "رقم الهاتف",
+    "emailAddress": "البريد الإلكتروني",
+    "country": "الدولة",
+    "nationality": "الجنسية",
+    "currency": "العملة",
+    "referralCode": "كود الإحالة",
+    "placeHolder": {
+      "firstName": "أدخل اسمك الأول",
+      "lastName": "أدخل اسم العائلة",
+      "nationalId": "أدخل رقم الهوية",
+      "phoneNumber": "أدخل رقم الهاتف",
+      "emailAddress": "أدخل بريدك الإلكتروني",
+      "country": "اختر دولتك",
+      "nationality": "اختر جنسيتك",
+      "currency": "اختر العملة",
+      "referralCode": "أدخل كود الإحالة (اختياري)",
+      "password": "أدخل كلمة المرور",
+      "confirmPassword": "أعد إدخال كلمة المرور"
+    }
+  },
+  "vendor": {
+    "sidebar": {
+      "overview": "نظرة عامة",
+      "vendors": "البائعون",
+      "products": "المنتجات",
+      "list": "قائمة",
+      "create": "إنشاء",
+      "orders": "الطلبات",
+      "successors": "الخلفاء",
+      "new": "جديد",
+      "referral": "الإحالة",
+      "profile": "الملف الشخصي"
+    },
+    "dashboard": {
+      "dashboardOverview": {
+        "title": "نظرة عامة على لوحة تحكم البائع",
+        "description": "هذه هي صفحة نظرة عامة على لوحة تحكم البائع حيث يمكنك رؤية المبيعات والطلبات والمعلومات المهمة الأخرى."
+      }
+    }
+  },
+  "investor": {
+    "sidebar": {
+      "overview": "نظرة عامة",
+      "transactions": "المعاملات",
+      "profitRequest": "طلب الأرباح",
+      "contactUs": "اتصل بنا",
+      "payments": "طرق الدفع"
+    },
+    "payment": {
+      "title": "طرق الدفع",
+      "subtitle": "إدارة طرق الدفع الخاصة بك",
+      "loading": "جاري تحميل طرق الدفع...",
+      "error": "فشل في تحميل طرق الدفع",
+      "retry": "إعادة المحاولة",
+      "noMethods": "لم يتم العثور على طرق دفع",
+      "addNew": "إضافة طريقة جديدة",
+      "delete": "حذف",
+      "deleteConfirm": {
+        "title": "حذف طريقة الدفع",
+        "content": "هل أنت متأكد من أنك تريد حذف طريقة الدفع هذه؟ لا يمكن التراجع عن هذا الإجراء."
+      },
+      "types": {
+        "visa": "فيزا",
+        "mastercard": "ماستركارد",
+        "amex": "أمريكان إكسبريس",
+        "paypal": "باي بال",
+        "bank_transfer": "تحويل بنكي"
+      },
+      "expires": "تنتهي الصلاحية",
+      "addNewPaymentMethod": {
+        "title": "إضافة طريقة دفع جديدة",
+        "cardType": "نوع البطاقة",
+        "cardHolderName": "اسم حامل البطاقة",
+        "cardNumber": "رقم البطاقة",
+        "expirationDate": "تاريخ انتهاء الصلاحية",
+        "cvvCvc": "رمز الأمان",
+        "addButton": "إضافة طريقة الدفع",
+        "addingButton": "جاري الإضافة...",
+        "cancelButton": "إلغاء",
+        "validation": {
+          "nameRequired": "اسم حامل البطاقة مطلوب",
+          "cardNumberRequired": "رقم البطاقة مطلوب",
+          "expiryRequired": "تاريخ انتهاء الصلاحية مطلوب",
+          "cvcRequired": "رمز الأمان مطلوب"
+        },
+        "errors": {
+          "general": "فشل في إنشاء طريقة الدفع. يرجى المحاولة مرة أخرى."
+        },
+        "placeholders": {
+          "cardHolderName": "اسم حامل البطاقة",
+          "cardNumber": "XXXX XXXX XXXX XXXX",
+          "expiry": "MM/YY",
+          "cvc": "***"
+        },
+        "tooltips": {
+          "cvc": "الرقم المكون من ثلاثة أرقام في الخلفية"
+        },
+        "security": "معاملتك محمية بتشفير SSL"
+      }
+    },
+    "withdraw": {
+      "title": "سحب الأموال",
+      "subtitle": "سحب عبر التحويل البنكي",
+      "amount": "المبلغ",
+      "name": "اسم صاحب الحساب",
+      "iban": "رقم الآيبان",
+      "swiftCode": "رمز السويفت",
+      "withdrawButton": "سحب",
+      "withdrawingButton": "جاري السحب...",
+      "cancelButton": "إلغاء",
+      "validation": {
+        "amountRequired": "المبلغ مطلوب",
+        "amountMin": "المبلغ يجب أن يكون على الأقل {min}",
+        "amountMax": "المبلغ لا يمكن أن يتجاوز {max}",
+        "paymentTypeRequired": "نوع الدفع مطلوب",
+        "ibanRequired": "رقم الآيبان مطلوب",
+        "nameRequired": "اسم صاحب الحساب مطلوب",
+        "swiftCodeRequired": "رمز السويفت مطلوب"
+      },
+      "errors": {
+        "general": "فشل في معالجة السحب. يرجى المحاولة مرة أخرى."
+      },
+      "placeholders": {
+        "amount": "أدخل المبلغ",
+        "name": "أدخل اسم صاحب الحساب",
+        "iban": "أدخل رقم الآيبان",
+        "swiftCode": "أدخل رمز السويفت"
+      },
+      "success": "تم إرسال طلب السحب بنجاح!",
+      "info": "سيتم معالجة سحبك خلال 1-3 أيام عمل."
+    },
+    "charge": {
+      "title": "شحن الرصيد",
+      "subtitle": "أضف أموال إلى حسابك",
+      "amount": "المبلغ",
+      "paymentType": "نوع الدفع",
+      "paymentMethod": "طريقة الدفع",
+      "chargeButton": "شحن",
+      "chargingButton": "جاري الشحن...",
+      "cancelButton": "إلغاء",
+      "validation": {
+        "amountRequired": "المبلغ مطلوب",
+        "amountMin": "المبلغ يجب أن يكون على الأقل {min}",
+        "paymentTypeRequired": "نوع الدفع مطلوب",
+        "paymentMethodRequired": "طريقة الدفع مطلوبة"
+      },
+      "errors": {
+        "general": "فشل في معالجة الشحن. يرجى المحاولة مرة أخرى."
+      },
+      "placeholders": {
+        "amount": "أدخل المبلغ"
+      },
+      "success": "تم شحن الرصيد بنجاح!",
+      "info": "سيتم تحديث رصيدك فوراً.",
+      "continue": "متابعة",
+      "paymentTypes": {
+        "visa": "فيزا",
+        "mastercard": "ماستركارد",
+        "amex": "أمريكان إكسبريس"
+      }
+    },
+    "dashboard": {
+      "dashboardOverview": {
+        "title": "نظرة عامة على لوحة تحكم المستثمر",
+        "description": "هذه هي صفحة نظرة عامة على لوحة تحكم المستثمر حيث يمكنك رؤية استثماراتك، وعوائدك، وغيرها من المعلومات المهمة.",
+        "totalBalance": "إجمالي الرصيد",
+        "chargeBalance": "شحن الرصيد",
+        "totalProfits": "إجمالي الأرباح",
+        "withdraw": "سحب",
+        "requestForProfits": "إرسال طلب",
+        "requestForProfitsMessage": "أرسل طلبًا لمعرفة الأرباح",
+        "transaction": {
+          "title": "المعاملات",
+          "transactionId": "رقم المعاملة",
+          "createAt": "تاريخ الإنشاء",
+          "amount": "المبلغ",
+          "status": "الحالة",
+          "noTransactions": "لم يتم العثور على معاملات",
+          "viewAll": "عرض الكل",
+          "statusValues": {
+            "pending": "قيد الانتظار",
+            "completed": "مكتملة",
+            "failed": "فاشلة"
+          },
+          "type": "النوع",
+          "typeValues": {
+            "withdrawal": "سحب",
+            "profit": "أرباح",
+            "deposit": "إيداع"
+          }
+        }
+      },
+      "transactionsPage": {
+        "title": "المعاملات",
+        "dashboard": "لوحة التحكم",
+        "bills": "الفواتير",
+        "transactions": "المعاملات",
+        "statusTaps": {
+          "all": "الكل",
+          "completed": "مكتملة",
+          "pending": "قيد الانتظار",
+          "failed": "فاشلة"
+        },
+        "transactionTable": {
+          "transactionId": "رقم المعاملة",
+          "createAt": "تاريخ الإنشاء",
+          "amount": "المبلغ",
+          "status": "الحالة",
+          "noTransactions": "لم يتم العثور على معاملات",
+          "viewAll": "عرض الكل",
+          "statusValues": {
+            "pending": "قيد الانتظار",
+            "completed": "مكتملة",
+            "failed": "فاشلة"
+          },
+          "type": "النوع",
+          "typeValues": {
+            "all": "الكل",
+            "withdrawal": "سحب",
+            "profit": "أرباح",
+            "deposit": "إيداع"
+          },
+          "tableToolbar": {
+            "endDate": "تاريخ الانتهاء",
+            "startDate": "تاريخ البدء",
+            "errorDate": "يجب أن يكون تاريخ الانتهاء بعد تاريخ البدء",
+            "minAmount": "الحد الأدنى للمبلغ",
+            "maxAmount": "الحد الأقصى للمبلغ",
+            "sortBy": "ترتيب حسب",
+            "sortByValues": {
+              "none": "بدون",
+              "createdAt": "تاريخ الإنشاء",
+              "amount": "المبلغ",
+              "type": "النوع",
+              "status": "الحالة"
+            },
+            "sortByDirection": "اتجاه الترتيب",
+            "sortByDirectionValues": {
+              "none": "بدون",
+              "asc": "تصاعدي",
+              "desc": "تنازلي"
+            }
+          }
+        }
+      },
+      "profitRequestPage": {
+        "title": "طلبات الأرباح",
+        "dashboard": "لوحة التحكم",
+        "newRequest": "طلب جديد",
+        "profitRequestTable": {
+          "title": "قائمة طلبات الأرباح",
+          "amount": "المبلغ",
+          "message": "الرسالة",
+          "createdAt": "تاريخ الإنشاء"
+        },
+        "profitRequestForm": {
+          "formTitle": "طلب أرباح جديد",
+          "formSubtitle": "يرجى إدخال المبلغ ووصف لطلب الأرباح.",
+          "amount": "المبلغ",
+          "message": "الرسالة",
+          "send": "إرسال الطلب",
+          "amountRequired": "المبلغ مطلوب",
+          "amountInvalid": "يجب أن يكون المبلغ رقمًا صحيحًا",
+          "amountPositive": "يجب أن يكون المبلغ أكبر من صفر",
+          "messageRequired": "الرسالة مطلوبة ويجب ألا تقل عن 10 أحرف",
+          "actionFailed": "فشلت العملية، يرجى المحاولة مرة أخرى"
+        }
+      },
+      "contactUsPage": {
+        "title": "اتصل بنا",
+        "dashboard": "لوحة التحكم",
+        "contactUsTable": {
+          "title": "رسائل التواصل",
+          "contactUsId": "رقم الرسالة",
+          "subject": "الموضوع",
+          "message": "الرسالة",
+          "createdAt": "تاريخ الإرسال"
+        },
+        "contactUsForm": {
+          "formTitle": "اتصل بنا",
+          "formSubtitle": "أرسل لنا رسالتك وسنرد عليك في أقرب وقت ممكن.",
+          "subject": "الموضوع",
+          "message": "الرسالة",
+          "send": "إرسال الرسالة",
+          "subjectRequired": "الموضوع مطلوب ويجب أن لا يقل عن 4 أحرف",
+          "messageRequired": "الرسالة مطلوبة ويجب أن لا تقل عن 10 أحرف",
+          "actionFailed": "فشل الإجراء. يرجى المحاولة مرة أخرى."
+        }
+      }
+    }
+  },
+  "client": {
+    "sidebar": {
+      "overview": "نظرة عامة",
+      "products": "المنتجات",
+      "categories": "الفئات",
+      "orders": "الطلبات",
+      "vendors": "البائعون",
+      "paymentMethods": "طرق الدفع"
+    },
+    "dashboard": {
+      "dashboardOverview": {
+        "title": "نظرة عامة على لوحة تحكم العميل",
+        "description": "هذه هي صفحة نظرة عامة على لوحة تحكم العميل حيث يمكنك رؤية الطلبات، والفواتير، والمعلومات المهمة الأخرى."
+      },
+      "orderStats": {
+        "totalOrders": "إجمالي الطلبات",
+        "pending": "قيد الانتظار",
+        "completed": "مكتملة"
+      },
+      "totalSpent": {
+        "title": "إجمالي المبلغ المنفق",
+        "subtitle": "جميع الطلبات المكتملة"
+      },
+      "cartSummary": {
+        "itemsInCart": "منتجات في السلة",
+        "viewCart": "عرض السلة"
+      },
+      "quickActions": {
+        "paymentMethods": "طرق الدفع",
+        "manageCards": "إدارة البطاقات"
+      },
+      "recentOrders": {
+        "title": "الطلبات الأخيرة",
+        "viewAll": "عرض الكل",
+        "orderId": "رقم الطلب",
+        "date": "التاريخ",
+        "items": "المنتجات",
+        "total": "الإجمالي",
+        "status": "الحالة",
+        "actions": "الإجراءات",
+        "loadingOrders": "جاري تحميل الطلبات...",
+        "noOrders": "لا توجد طلبات بعد",
+        "noOrdersDescription": "ابدأ التسوق لرؤية طلباتك هنا",
+        "browseProducts": "تصفح المنتجات",
+        "viewDetails": "عرض التفاصيل",
+        "statusValues": {
+          "pending": "قيد الانتظار",
+          "completed": "مكتملة",
+          "cancelled": "ملغية",
+          "processing": "قيد المعالجة"
+        }
+      }
+    }
+  },
+  "product": {
+    "details": {
+      "backToProducts": "العودة إلى المنتجات",
+      "productNotFound": "المنتج غير موجود",
+      "productNotFoundDescription": "المنتج الذي تبحث عنه غير موجود أو تم حذفه.",
+      "backToShop": "العودة إلى المتجر",
+      "inStock": "متوفر",
+      "outOfStock": "غير متوفر",
+      "colors": "الألوان",
+      "sizes": "المقاسات",
+      "quantity": "الكمية",
+      "sku": "رمز المنتج",
+      "category": "الفئة",
+      "manufacturer": "الشركة المصنعة",
+      "stock": "المخزون",
+      "units": "وحدة",
+      "addToCart": "إضافة إلى السلة",
+      "orderSummary": "ملخص الطلب",
+      "product": "المنتج",
+      "color": "اللون",
+      "size": "المقاس",
+      "total": "الإجمالي",
+      "alreadyInCart": "موجود في السلة",
+      "viewCart": "عرض السلة",
+      "productOutOfStock": "المنتج غير متوفر",
+      "addedToCart": "تمت الإضافة إلى السلة!"
+    },
+    "cart": {
+      "title": "سلة التسوق",
+      "emptyCart": "السلة فارغة",
+      "emptyCartDescription": "أضف منتجات إلى سلتك لتقديم طلب",
+      "continueShopping": "متابعة التسوق",
+      "shopNow": "تسوق الآن",
+      "placeOrder": "تقديم الطلب",
+      "removeItem": "حذف المنتج",
+      "updateQuantity": "تحديث الكمية",
+      "color": "اللون",
+      "size": "المقاس",
+      "orderSummary": "ملخص الطلب",
+      "items": "المنتجات",
+      "subtotal": "المجموع الفرعي",
+      "shipping": "الشحن",
+      "tax": "الضريبة",
+      "total": "الإجمالي",
+      "checkout": "إتمام الطلب",
+      "itemRemoved": "تم حذف المنتج من السلة",
+      "cartIsEmpty": "السلة فارغة",
+      "shippingAddress": "عنوان الشحن",
+      "streetAddress": "عنوان الشارع",
+      "city": "المدينة",
+      "state": "الولاية",
+      "country": "الدولة",
+      "zip": "الرمز البريدي",
+      "orderNotes": "ملاحظات الطلب (اختياري)",
+      "orderNotesPlaceholder": "مثال: يرجى التوصيل بين الساعة 9 صباحاً - 5 مساءً",
+      "paymentMethod": "طريقة الدفع",
+      "shippingMethod": "طريقة الشحن",
+      "cancel": "إلغاء",
+      "placing": "جاري التقديم...",
+      "ordersPlacedSuccessfully": "تم تقديم الطلبات بنجاح!",
+      "failedToPlaceOrder": "فشل في تقديم الطلب",
+      "pleaseFillShippingAddress": "الرجاء ملء جميع حقول عنوان الشحن"
+    },
+    "shop": {
+      "title": "المتجر",
+      "products": "المنتجات",
+      "allProducts": "جميع المنتجات",
+      "search": "البحث عن منتجات",
+      "filter": "تصفية",
+      "sortBy": "ترتيب حسب",
+      "priceRange": "نطاق السعر",
+      "category": "الفئة",
+      "noProducts": "لا توجد منتجات",
+      "noProductsDescription": "لم يتم العثور على منتجات تطابق معايير البحث",
+      "cart": "السلة",
+      "inStock": "متوفر",
+      "outOfStock": "غير متوفر",
+      "details": "التفاصيل",
+      "addToCart": "إضافة إلى السلة",
+      "inCart": "في السلة",
+      "productOutOfStock": "المنتج غير متوفر",
+      "addedToCart": "تمت الإضافة إلى السلة!",
+      "failedToLoadProducts": "فشل في تحميل المنتجات",
+      "filters": {
+        "title": "الفلاتر",
+        "clearAll": "مسح الكل",
+        "search": "البحث عن منتجات...",
+        "gender": "الجنس",
+        "men": "رجال",
+        "women": "نساء",
+        "kids": "أطفال",
+        "category": "الفئة",
+        "all": "الكل",
+        "price": "السعر",
+        "below25": "أقل من $25",
+        "between2575": "بين $25 - $75",
+        "above75": "أكثر من $75"
+      }
+    }
+  },
+  "order": {
+    "list": {
+      "heading": "القائمة",
+      "dashboard": "لوحة التحكم",
+      "orderLabel": "الطلب",
+      "listLabel": "القائمة",
+      "all": "الكل",
+      "tableHead": {
+        "orderNumber": "الطلب",
+        "customer": "العميل",
+        "date": "التاريخ",
+        "items": "المنتجات",
+        "price": "السعر",
+        "status": "الحالة"
+      },
+      "search": "البحث عن عميل أو رقم طلب...",
+      "startDate": "تاريخ البداية",
+      "endDate": "تاريخ النهاية",
+      "endDateError": "تاريخ النهاية يجب أن يكون بعد تاريخ البداية",
+      "statusLabel": "الحالة",
+      "resultsFound": "نتيجة",
+      "delete": "حذف",
+      "deleteConfirm": "هل أنت متأكد من حذف",
+      "itemsLabel": "عنصر؟",
+      "deleteSuccess": "تم الحذف بنجاح!",
+      "failedToLoad": "فشل في تحميل الطلبات",
+      "orderShippedSuccessfully": "تم شحن الطلب بنجاح!",
+      "failedToShip": "فشل في شحن الطلب",
+      "orderPaidSuccessfully": "تم دفع الطلب بنجاح!",
+      "failedToPay": "فشل في دفع الطلب"
+    },
+    "shipOrder": "شحن الطلب",
+    "shipping": "جاري الشحن...",
+    "shippingMethod": "طريقة الشحن",
+    "enterShippingMethod": "أدخل طريقة الشحن (مثال: DHL, FedEx, UPS)",
+    "shippingMethodRequired": "طريقة الشحن مطلوبة",
+    "customer": "العميل",
+    "address": "العنوان",
+    "payOrder": "دفع الطلب",
+    "paymentMethod": "طريقة الدفع",
+    "selectPaymentMethod": "اختر طريقة الدفع لإتمام العملية",
+    "processPayment": "إتمام الدفع",
+    "paymentProcessing": "جاري المعالجة...",
+    "paymentMethodRequired": "طريقة الدفع مطلوبة"
+  },
+  "orderDetails": {
+    "notFound": "الطلب غير موجود",
+    "failedToLoad": "فشل في تحميل تفاصيل الطلب",
+    "details": "التفاصيل",
+    "subtotal": "المجموع الفرعي",
+    "shipping": "الشحن",
+    "discount": "الخصم",
+    "taxes": "الضرائب",
+    "total": "الإجمالي",
+    "history": "السجل",
+    "orderTime": "وقت الطلب",
+    "paymentTime": "وقت الدفع",
+    "deliveryTime": "وقت التسليم للناقل",
+    "completionTime": "وقت الإنجاز",
+    "customerInfo": "معلومات العميل",
+    "ipAddress": "عنوان IP",
+    "delivery": "التوصيل",
+    "shipBy": "الشحن بواسطة",
+    "speedy": "سريع",
+    "trackingNo": "رقم التتبع",
+    "shippingAddress": "عنوان الشحن",
+    "address": "العنوان",
+    "phoneNumber": "رقم الهاتف",
+    "payment": "الدفع",
+    "method": "الطريقة",
+    "cardNumber": "رقم البطاقة",
+    "status": "الحالة",
+    "addToBlacklist": "إضافة إلى القائمة السوداء"
+  },
+  "orderToolbar": {
+    "order": "الطلب",
+    "payOrder": "دفع الطلب",
+    "processing": "جاري المعالجة...",
+    "shipOrder": "شحن الطلب",
+    "shipping": "جاري الشحن...",
+    "print": "طباعة",
+    "edit": "تعديل"
+  },
+  "orderPayment": {
+    "title": "دفع الطلب",
+    "customer": "العميل",
+    "totalAmount": "المبلغ الإجمالي",
+    "currentStatus": "الحالة الحالية",
+    "selectCardError": "يرجى اختيار بطاقة دفع",
+    "methodRequiredError": "طريقة الدفع مطلوبة",
+    "useSavedCard": "استخدم بطاقة محفوظة",
+    "otherMethods": "طرق دفع أخرى",
+    "selectCard": "اختر بطاقة:",
+    "expires": "ينتهي في",
+    "paymentMethod": "طريقة الدفع",
+    "helperText": "اختر طريقة دفع لإتمام العملية",
+    "noSavedCards": "لا توجد طرق دفع محفوظة. يرجى إضافة بطاقة أولاً.",
+    "cancel": "إلغاء",
+    "process": "إتمام الدفع",
+    "methods": {
+      "cash_on_delivery": "الدفع عند الاستلام",
+      "myfatoorah": "MyFatoorah",
+      "paypal": "PayPal",
+      "bank_transfer": "تحويل بنكي"
+    }
+  },
+  "address": {
+    "title": "عنوان جديد",
+    "name": "الاسم الكامل",
+    "phone": "رقم الهاتف",
+    "address": "العنوان",
+    "city": "المدينة",
+    "state": "الولاية / المنطقة",
+    "zipCode": "الرمز البريدي",
+    "country": "الدولة",
+    "chooseCountry": "اختر الدولة",
+    "latitude": "خط العرض",
+    "longitude": "خط الطول",
+    "default": "استخدام هذا العنوان كافتراضي",
+    "home": "المنزل",
+    "office": "العمل",
+    "deliver": "التوصيل لهذا العنوان",
+    "cancel": "إلغاء"
+  },
+  "payment": {
+    "methods": {
+      "title": "طرق الدفع",
+      "subtitle": "إدارة طرق الدفع الخاصة بك",
+      "loading": "جاري تحميل طرق الدفع...",
+      "error": "فشل في تحميل طرق الدفع",
+      "retry": "إعادة المحاولة",
+      "noMethods": "لا توجد طرق دفع",
+      "noMethodsDescription": "لم تقم بإضافة أي طرق دفع بعد. أضف بطاقتك الأولى للبدء.",
+      "addNew": "إضافة بطاقة جديدة",
+      "addMethod": "إضافة طريقة دفع",
+      "expires": "تنتهي الصلاحية",
+      "deleteMethod": "حذف طريقة الدفع",
+      "deleteConfirm": {
+        "title": "حذف طريقة الدفع",
+        "content": "هل أنت متأكد من أنك تريد حذف طريقة الدفع هذه؟ لا يمكن التراجع عن هذا الإجراء.",
+        "delete": "حذف"
+      },
+      "types": {
+        "visa": "فيزا",
+        "mastercard": "ماستركارد",
+        "amex": "أمريكان إكسبريس",
+        "bank_transfer": "تحويل بنكي",
+        "paypal": "باي بال"
+      }
+    },
+    "newCard": {
+      "title": "إضافة طريقة دفع جديدة",
+      "cardType": "نوع البطاقة",
+      "cardHolderName": "اسم حامل البطاقة",
+      "cardNumber": "رقم البطاقة",
+      "expiryDate": "تاريخ انتهاء الصلاحية",
+      "cvc": "رمز الأمان",
+      "cancel": "إلغاء",
+      "addCard": "إضافة البطاقة",
+      "securityNote": "معلومات الدفع الخاصة بك آمنة ومشفرة",
+      "placeholders": {
+        "cardHolderName": "أحمد محمد",
+        "cardNumber": "1234 5678 9012 3456",
+        "expiryDate": "MM/YY",
+        "cvc": "123"
+      },
+      "tooltips": {
+        "cvc": "رمز الأمان المكون من 3 أو 4 أرقام على ظهر البطاقة"
+      },
+      "errors": {
+        "nameRequired": "اسم حامل البطاقة مطلوب",
+        "invalidCardNumber": "الرجاء إدخال رقم بطاقة صالح",
+        "invalidExpiry": "الرجاء إدخال تاريخ صلاحية صالح (MM/YY)",
+        "invalidCvc": "الرجاء إدخال رمز أمان صالح",
+        "addFailed": "فشل في إضافة طريقة الدفع. الرجاء المحاولة مرة أخرى."
+      }
+    }
+  },
+  "sidebar": {
+    "overview": "نظرة عامة",
+    "vendors-management": "إدارة البائعين",
+    "clients-management": "إدارة العملاء",
+    "products": "المنتجات",
+    "categorize": "التصنيفات",
+    "orders": "الطلبات",
+    "bills": "الفواتير",
+    "shipment": "الشحن",
+    "branches": "الفروع"
+  },
+  "accountPage": {
+    "title": "الحساب",
+    "dashboard": "لوحة التحكم",
+    "user": "المستخدم",
+    "profile": "الملف الشخصي",
+    "noData": "لا توجد بيانات متاحة",
+    "name": "الاسم",
+    "lastName": "اسم العائلة",
+    "email": "البريد الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "nationality": "الجنسية",
+    "country": "الدولة",
+    "currency": "العملة",
+    "gender": "الجنس",
+    "nationalId": "رقم الهوية الوطنية",
+    "birthDate": "تاريخ الميلاد",
+    "addresses": "العناوين",
+    "addressNumber": "العنوان {{number}}",
+    "address": "العنوان",
+    "postCode": "الرمز البريدي",
+    "latitude": "خط العرض",
+    "longitude": "خط الطول",
+    "addAddress": "إضافة عنوان",
+    "addNewAddress": "إضافة عنوان جديد",
+    "state": "الولاية",
+    "city": "المدينة",
+    "selectCountry": "اختر الدولة",
+    "selectState": "اختر الولاية",
+    "selectCity": "اختر المدينة",
+    "addressRequired": "العنوان مطلوب",
+    "countryRequired": "الدولة مطلوبة",
+    "stateRequired": "الولاية مطلوبة",
+    "cityRequired": "المدينة مطلوبة",
+    "postCodeRequired": "الرمز البريدي مطلوب",
+    "latitudeRequired": "خط العرض مطلوب",
+    "longitudeRequired": "خط الطول مطلوب",
+    "addressAddedSuccess": "تم إضافة العنوان بنجاح!",
+    "addressAddedFailed": "فشل في إضافة العنوان.",
+    "type": "النوع",
+    "typeValues": {
+      "client": "عميل",
+      "vendor": "بائع",
+      "investor": "مستثمر"
+    },
+    "status": "الحالة",
+    "statusValues": {
+      "active": "نشط",
+      "pending": "قيد الانتظار",
+      "banned": "محظور"
+    },
+    "avatar": "الصورة الشخصية",
+    "avatarUpload": "رفع صورة",
+    "avatarUploadInfo": "انقر لرفع صورة جديدة",
+    "avatarUploadSuccess": "تم رفع الصورة بنجاح!",
+    "avatarUploadFailed": "فشل في رفع الصورة.",
+    "noValidSelected": "لم يتم اختيار ملف صالح.",
+    "accountDrawer": {
+      "home": "الرئيسية",
+      "homeInfo": "الذهاب إلى لوحة التحكم",
+      "profile": "الملف الشخصي",
+      "profileInfo": "عرض ملفك الشخصي",
+      "logout": "تسجيل الخروج"
+    }
+  }
+}

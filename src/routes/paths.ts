@@ -1,0 +1,189 @@
+import { paramCase } from 'src/utils/change-case';
+
+import { _id, _postTitles } from 'src/_mock/assets';
+
+// ----------------------------------------------------------------------
+
+const MOCK_ID = _id[1];
+
+const MOCK_TITLE = _postTitles[2];
+
+const ROOTS = {
+  AUTH: '/auth',
+  AUTH_DEMO: '/auth-demo',
+  DASHBOARD: '/dashboard',
+};
+
+// ----------------------------------------------------------------------
+
+export const paths = {
+  maintenance: '/maintenance',
+  pricing: '/pricing',
+  payment: '/payment',
+  about: '/about-us',
+  contact: '/contact-us',
+  faqs: '/faqs',
+  page403: '/error/403',
+  page404: '/error/404',
+  page500: '/error/500',
+  post: {
+    root: `/post`,
+    details: (title: string) => `/post/${paramCase(title)}`,
+    demo: { details: `/post/${paramCase(MOCK_TITLE)}` },
+  },
+  // AUTH
+  auth: {
+    signIn: `${ROOTS.AUTH}/sign-in`,
+    signUp: `${ROOTS.AUTH}/sign-up`,
+    SignUpVendor: `${ROOTS.AUTH}/vendor/sign-up`,
+    SignUpClient: `${ROOTS.AUTH}/client/sign-up`,
+    SignUpInvestor: `${ROOTS.AUTH}/investor/sign-up`,
+    resetPassword: `${ROOTS.AUTH}/reset-password`,
+    updatePassword: `${ROOTS.AUTH}/update-password`,
+    verify: `${ROOTS.AUTH}/verify`,
+  }, // DASHBOARD
+  dashboard: {
+    root: ROOTS.DASHBOARD,
+    general: {
+      app: `${ROOTS.DASHBOARD}/app`,
+    },
+    investor: {
+      transactions: `${ROOTS.DASHBOARD}/investor/transactions`,
+      contactUs: `${ROOTS.DASHBOARD}/investor/contact-us`,
+      profitRequest: `${ROOTS.DASHBOARD}/investor/profit-requests`,
+      payments: `${ROOTS.DASHBOARD}/investor/payments`,
+    },
+    user: {
+      root: `${ROOTS.DASHBOARD}/user`,
+      new: `${ROOTS.DASHBOARD}/user/new`,
+      list: `${ROOTS.DASHBOARD}/user/list`,
+      cards: `${ROOTS.DASHBOARD}/user/cards`,
+      profile: `${ROOTS.DASHBOARD}/user/profile`,
+      account: `${ROOTS.DASHBOARD}/user/account`,
+      edit: (id: string) => `${ROOTS.DASHBOARD}/user/${id}/edit`,
+      demo: {
+        edit: `${ROOTS.DASHBOARD}/user/${MOCK_ID}/edit`,
+      },
+    },
+    vendorsManagement: {
+      root: `${ROOTS.DASHBOARD}/user`,
+      new: `${ROOTS.DASHBOARD}/user/new`,
+      list: `${ROOTS.DASHBOARD}/user/list`,
+      cards: `${ROOTS.DASHBOARD}/user/cards`,
+      profile: `${ROOTS.DASHBOARD}/user/profile`,
+      account: `${ROOTS.DASHBOARD}/user/account`,
+      edit: (id: string) => `${ROOTS.DASHBOARD}/user/${id}/edit`,
+      demo: {
+        edit: `${ROOTS.DASHBOARD}/user/${MOCK_ID}/edit`,
+      },
+    },
+    clientsManagement: {
+      root: `${ROOTS.DASHBOARD}/user`,
+      new: `${ROOTS.DASHBOARD}/user/new`,
+      list: `${ROOTS.DASHBOARD}/user/list`,
+      cards: `${ROOTS.DASHBOARD}/user/cards`,
+      profile: `${ROOTS.DASHBOARD}/user/profile`,
+      account: `${ROOTS.DASHBOARD}/user/account`,
+      edit: (id: string) => `${ROOTS.DASHBOARD}/user/${id}/edit`,
+      demo: {
+        edit: `${ROOTS.DASHBOARD}/user/${MOCK_ID}/edit`,
+      },
+    },
+    product: {
+      root: `${ROOTS.DASHBOARD}/product`,
+      shop: `${ROOTS.DASHBOARD}/product/shop`,
+      cart: `${ROOTS.DASHBOARD}/product/cart`,
+      new: `${ROOTS.DASHBOARD}/product/new`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/product/${id}`,
+      edit: (id: string) => `${ROOTS.DASHBOARD}/product/${id}/edit`,
+      demo: {
+        details: `${ROOTS.DASHBOARD}/product/${MOCK_ID}`,
+        edit: `${ROOTS.DASHBOARD}/product/${MOCK_ID}/edit`,
+      },
+    },
+    invoice: {
+      root: `${ROOTS.DASHBOARD}/invoice`,
+      new: `${ROOTS.DASHBOARD}/invoice/new`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/invoice/${id}`,
+      edit: (id: string) => `${ROOTS.DASHBOARD}/invoice/${id}/edit`,
+      demo: {
+        details: `${ROOTS.DASHBOARD}/invoice/${MOCK_ID}`,
+        edit: `${ROOTS.DASHBOARD}/invoice/${MOCK_ID}/edit`,
+      },
+    },
+    post: {
+      root: `${ROOTS.DASHBOARD}/post`,
+      new: `${ROOTS.DASHBOARD}/post/new`,
+      details: (title: string) => `${ROOTS.DASHBOARD}/post/${paramCase(title)}`,
+      edit: (title: string) => `${ROOTS.DASHBOARD}/post/${paramCase(title)}/edit`,
+      demo: {
+        details: `${ROOTS.DASHBOARD}/post/${paramCase(MOCK_TITLE)}`,
+        edit: `${ROOTS.DASHBOARD}/post/${paramCase(MOCK_TITLE)}/edit`,
+      },
+    },
+    order: {
+      root: `${ROOTS.DASHBOARD}/order`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/order/${id}`,
+      demo: {
+        details: `${ROOTS.DASHBOARD}/order/${MOCK_ID}`,
+      },
+    },
+    shipment: {
+      root: `${ROOTS.DASHBOARD}/order`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/order/${id}`,
+      demo: {
+        details: `${ROOTS.DASHBOARD}/order/${MOCK_ID}`,
+      },
+    },
+    vendor: {
+      root: `${ROOTS.DASHBOARD}/vendor`,
+      list: `${ROOTS.DASHBOARD}/vendor/list`,
+      profile: `${ROOTS.DASHBOARD}/vendor/profile`,
+      product: {
+        root: `${ROOTS.DASHBOARD}/vendor/product`,
+        new: `${ROOTS.DASHBOARD}/vendor/product/new`,
+        edit: (id: string) => `${ROOTS.DASHBOARD}/vendor/product/${id}/edit`,
+      },
+      order: {
+        root: `${ROOTS.DASHBOARD}/vendor/order`,
+        details: (id: string) => `${ROOTS.DASHBOARD}/vendor/order/${id}`,
+      },
+      successor: {
+        root: `${ROOTS.DASHBOARD}/vendor/successor`,
+        new: `${ROOTS.DASHBOARD}/vendor/successor/new`,
+        edit: (id: string) => `${ROOTS.DASHBOARD}/vendor/successor/${id}/edit`,
+      },
+      referral: {
+        root: `${ROOTS.DASHBOARD}/vendor/referral`,
+      },
+    },
+    category: {
+      root: `${ROOTS.DASHBOARD}/category`,
+      list: `${ROOTS.DASHBOARD}/category/list`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/category/${id}`,
+    },
+    client: {
+      paymentMethods: `${ROOTS.DASHBOARD}/client/payment-methods`,
+    },
+    job: {
+      root: `${ROOTS.DASHBOARD}/job`,
+      new: `${ROOTS.DASHBOARD}/job/new`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/job/${id}`,
+      edit: (id: string) => `${ROOTS.DASHBOARD}/job/${id}/edit`,
+      demo: {
+        details: `${ROOTS.DASHBOARD}/job/${MOCK_ID}`,
+        edit: `${ROOTS.DASHBOARD}/job/${MOCK_ID}/edit`,
+      },
+    },
+    tour: {
+      root: `${ROOTS.DASHBOARD}/tour`,
+      new: `${ROOTS.DASHBOARD}/tour/new`,
+      details: (id: string) => `${ROOTS.DASHBOARD}/tour/${id}`,
+      edit: (id: string) => `${ROOTS.DASHBOARD}/tour/${id}/edit`,
+      demo: {
+        details: `${ROOTS.DASHBOARD}/tour/${MOCK_ID}`,
+        edit: `${ROOTS.DASHBOARD}/tour/${MOCK_ID}/edit`,
+      },
+    },
+  },
+};

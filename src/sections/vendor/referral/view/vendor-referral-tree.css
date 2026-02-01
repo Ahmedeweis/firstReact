@@ -1,0 +1,203 @@
+:root {
+  --ref-bg-root: #CEC0C0;
+  --ref-border-root: #D32F2F;
+  --ref-text-root-member: #B71D18;
+  --ref-line-color: #9E9E9E;
+  --ref-card-bg: #FFFFFF;
+  --ref-card-border: #E0E0E0;
+  --ref-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.referral-tree-container {
+  overflow-x: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.org-tree {
+  display: inline-table;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.org-tree ul {
+  padding-top: 20px;
+  position: relative;
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding-left: 0;
+}
+
+.org-tree li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 10px 10px 0 10px;
+  transition: all 0.5s;
+}
+
+/* Connecting Lines Logic */
+.org-tree li::before,
+.org-tree li::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 50%;
+  border-top: 1px dashed var(--ref-line-color);
+  width: 50%;
+  height: 20px;
+}
+
+.org-tree li::after {
+  right: auto;
+  left: 50%;
+  border-left: 1px dashed var(--ref-line-color);
+}
+
+/* Remove connectors from single child scenarios or first/last elements properly */
+.org-tree li:only-child::after,
+.org-tree li:only-child::before {
+  display: none;
+}
+
+.org-tree li:only-child {
+  padding-top: 0;
+}
+
+.org-tree li:first-child::before,
+.org-tree li:last-child::after {
+  border: 0 none;
+}
+
+/* Vertical line down from parent */
+.org-tree li:last-child::before {
+  border-right: 1px dashed var(--ref-line-color);
+  border-radius: 0 0 0 0;
+}
+
+.org-tree li:first-child::after {
+  border-radius: 0 0 0 0;
+}
+
+.org-tree ul ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-left: 1px dashed var(--ref-line-color);
+  width: 0;
+  height: 20px;
+}
+
+/* Node Styling */
+.org-node {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+/* Container for the node card */
+.node-card {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  /* Increased Radius */
+  border: 1px solid #E0E0E0;
+  transition: all 0.3s ease;
+}
+
+/* Root Node Specific - Full Width and Red Border */
+.org-node.root-node .node-card {
+  min-width: 400px;
+  /* Wider */
+  background-color: var(--ref-bg-root);
+  border: 2px solid var(--ref-border-root);
+  border-radius: 16px;
+  /* Added Radius as requested */
+  /* Square */
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Child Node Specifics */
+.org-node.child-node .node-card {
+  min-width: 200px;
+  /* Wider */
+  box-shadow: var(--ref-shadow);
+  border-radius: 12px;
+}
+
+/* Avatar Styling */
+.avatar-container {
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.node-card .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #FFF;
+  display: block;
+}
+
+.avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #FFF;
+  background-color: #9E9E9E;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Info Alignment - Left */
+.info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 4px;
+}
+
+.balance-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.balance-label {
+  font-size: 0.75rem;
+  color: #444;
+}
+
+.balance-value {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #000;
+}
+
+/* Member Count */
+.member-count {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ref-text-root-member);
+  margin-left: 12px;
+}
