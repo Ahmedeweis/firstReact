@@ -18,6 +18,7 @@ import { fCurrency } from 'src/utils/format-number';
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
+import { useTranslate } from 'src/locales';
 
 // ----------------------------------------------------------------------
 
@@ -35,6 +36,8 @@ export function VendorOrderTableRow({
     onSelectRow,
 }: Props) {
     const { orderNumber, createdAt, status, customer, totalAmount, totalQuantity, items } = row;
+
+    const { t } = useTranslate();
 
     const collapse = useBoolean();
 
@@ -101,7 +104,7 @@ export function VendorOrderTableRow({
                         'default'
                     }
                 >
-                    {status}
+                    {t(`order.status.${status}`)}
                 </Label>
             </TableCell>
 

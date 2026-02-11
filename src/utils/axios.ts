@@ -108,8 +108,8 @@ export const endpoints = {
   },
   core: {
     countries: '/countries',
-    states: (countryId: string) => `/countries/${countryId}/states`,
-    cities: (stateId: string) => `/states/${stateId}/cities`,
+    states: '/states',
+    cities: '/cities',
     manufacturers: '/manufacturers',
   },
   order: {

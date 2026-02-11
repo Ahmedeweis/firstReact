@@ -1,11 +1,13 @@
 User Accounts for International Company
 ---------------------------------------
-(بائع ) Vendor
-Email: rere@gmail.com
+مسوق ) Vendor
+Email: ahmedeweiso@gmail.com
 Password: 12345678
+-----------------------------------
 (عميل ) Client
 Email: ahmed.eweiis@gmail.com
 Password: 12345678
+-------------------------------------
 (مستثمر) Investor
-Email: user@app.com
-Password: 12345678
+investor@gmail.com
+12345678

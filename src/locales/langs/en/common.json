@@ -1,7 +1,17 @@
 {
     "common": {
         "ok": "OK",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "home": "Home"
+    },
+    "home": {
+        "hero": {
+            "hello": "Hello",
+            "welcomeTo": "Welcome to",
+            "ourSystem": "Our system",
+            "welcomeMessage": "welcome to our system ",
+            "minimalDesignSystem": "Minimal Design System Minimal Design System"
+        }
     },
     "auth": {
         "signUpVendorTitle": "Sign up as a vendor",
@@ -37,6 +47,9 @@
         "signInButton": "Sign In",
         "createAccountButton": "Create an account",
         "signIn": "Sign in",
+        "signUpVendor": "Sign up as Vendor",
+        "signUpClient": "Sign up as Client",
+        "signUpInvestor": "Sign up as Investor",
         "dontHaveAccount": "Don't have an account?",
         "haveAccount": "Have an account?",
         "getStarted": "Get started",
@@ -77,6 +90,17 @@
             "referralCode": "Enter referral code (optional)",
             "password": "Enter your password",
             "confirmPassword": "Confirm your password"
+        },
+        "gender": "Gender",
+        "selectGender": "Select Gender",
+        "male": "Male",
+        "female": "Female",
+        "genderRequired": "Gender is required!",
+        "terms": {
+            "agree": "By signing up, I agree to ",
+            "service": "Terms of service",
+            "and": " and ",
+            "privacy": "Privacy policy"
         }
     },
     "vendor": {
@@ -547,7 +571,14 @@
         "selectPaymentMethod": "Select a payment method to process the payment",
         "processPayment": "Process Payment",
         "paymentProcessing": "Processing...",
-        "paymentMethodRequired": "Payment method is required"
+        "paymentMethodRequired": "Payment method is required",
+        "status": {
+            "pending": "Pending",
+            "completed": "Completed",
+            "cancelled": "Cancelled",
+            "refunded": "Refunded",
+            "processing": "Processing"
+        }
     },
     "orderDetails": {
         "notFound": "Order not found",

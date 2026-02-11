@@ -11,6 +11,9 @@ import { useTheme } from '@mui/material/styles';
 
 import { stylesMode } from 'src/theme/styles';
 
+
+import { useTranslate } from 'src/locales';
+
 import { varFade } from 'src/components/animate';
 
 // ----------------------------------------------------------------------
@@ -209,6 +212,8 @@ export function PlusIcon() {
 // ----------------------------------------------------------------------
 
 export function Texts({ sx, ...other }: StackProps) {
+  const { t } = useTranslate();
+
   return (
     <Stack
       component={m.div}
@@ -248,7 +253,8 @@ export function Texts({ sx, ...other }: StackProps) {
           animate={{ x: ['0%', '-50%'] }}
           transition={{ duration: 64, ease: 'linear', repeat: Infinity }}
         >
-          Minimal Design System Minimal Design System
+
+          {t('home.hero.minimalDesignSystem')}
         </m.text>
       </Box>
     </Stack>

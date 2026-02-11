@@ -24,6 +24,7 @@ import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 import { ConfirmDialog } from 'src/components/custom-dialog';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
+import { useTranslate } from 'src/locales';
 
 // ----------------------------------------------------------------------
 
@@ -46,6 +47,8 @@ export function OrderTableRow({
   onPayRow,
   onShipRow,
 }: Props) {
+  const { t } = useTranslate();
+
   const confirm = useBoolean();
 
   const collapse = useBoolean();
@@ -104,7 +107,7 @@ export function OrderTableRow({
             'default'
           }
         >
-          {row.status}
+          {t(`order.status.${row.status}`)}
         </Label>
       </TableCell>
 

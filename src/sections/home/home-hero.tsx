@@ -16,6 +16,7 @@ import { useResponsive } from 'src/hooks/use-responsive';
 import { textGradient } from 'src/theme/styles';
 
 import { varFade, MotionContainer } from 'src/components/animate';
+import { useTranslate } from 'src/locales';
 
 import { HeroBackground } from './components/hero-background';
 
@@ -27,6 +28,8 @@ const lgKey = 'lg';
 
 export function HomeHero({ sx, ...other }: StackProps) {
   const theme = useTheme();
+
+  const { t } = useTranslate();
 
   const scroll = useScrollPercent();
 
@@ -60,10 +63,11 @@ export function HomeHero({ sx, ...other }: StackProps) {
           [theme.breakpoints.up(lgKey)]: { fontSize: 72, lineHeight: '90px' },
         }}
       >
+
         <Box component="span" sx={{ width: 1, opacity: 0.24 }}>
-          Hello
+          {t('home.hero.hello')}
         </Box>
-        Welcome to
+        {t('home.hero.welcomeTo')}
         <Box
           component={m.span}
           animate={{ backgroundPosition: '200% center' }}
@@ -81,7 +85,7 @@ export function HomeHero({ sx, ...other }: StackProps) {
             ml: { xs: 0.75, md: 1, xl: 1.5 },
           }}
         >
-          Our system
+          {t('home.hero.ourSystem')}
         </Box>
       </Box>
     </MInview>
@@ -97,8 +101,65 @@ export function HomeHero({ sx, ...other }: StackProps) {
           [theme.breakpoints.up(lgKey)]: { fontSize: 20, lineHeight: '36px' },
         }}
       >
-        welcome to our system welcome to our system welcome to our system
+
+        {t('home.hero.welcomeMessage')}
       </Typography>
+    </MInview>
+  );
+
+  const renderRegistrationButtons = (
+    <MInview>
+      <Box
+        display="flex"
+        flexWrap="wrap"
+        justifyContent="center"
+        gap={{ xs: 2, sm: 3 }}
+        sx={{ mt: 4 }}
+      >
+        <Button
+          href="/auth/vendor/sign-up"
+          variant="contained"
+          size="large"
+          sx={{
+            minWidth: { xs: '100%', sm: 200 },
+            py: 1.5,
+            fontSize: { xs: 14, sm: 16 },
+            fontWeight: 600,
+          }}
+        >
+          {t('auth.signUpVendor')}
+        </Button>
+
+        <Button
+          href="/auth/client/sign-up"
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{
+            minWidth: { xs: '100%', sm: 200 },
+            py: 1.5,
+            fontSize: { xs: 14, sm: 16 },
+            fontWeight: 600,
+          }}
+        >
+          {t('auth.signUpClient')}
+        </Button>
+
+        <Button
+          href="/auth/investor/sign-up"
+          variant="contained"
+          color="warning"
+          size="large"
+          sx={{
+            minWidth: { xs: '100%', sm: 200 },
+            py: 1.5,
+            fontSize: { xs: 14, sm: 16 },
+            fontWeight: 600,
+          }}
+        >
+          {t('auth.signUpInvestor')}
+        </Button>
+      </Box>
     </MInview>
   );
 
@@ -191,6 +252,7 @@ export function HomeHero({ sx, ...other }: StackProps) {
           <Stack spacing={3} sx={{ textAlign: 'center' }}>
             <m.div style={{ y: y1 }}>{renderHeading}</m.div>
             <m.div style={{ y: y2 }}>{renderText}</m.div>
+            <m.div style={{ y: y2 }}>{renderRegistrationButtons}</m.div>
           </Stack>
           {/* <m.div style={{ y: y4 }}>{renderButtons}</m.div> */}
         </Container>

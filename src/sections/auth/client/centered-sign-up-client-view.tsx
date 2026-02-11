@@ -13,6 +13,7 @@ import Stack from '@mui/material/Stack';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
+import MenuItem from '@mui/material/MenuItem';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import { paths } from 'src/routes/paths';
@@ -73,7 +74,7 @@ export function CenteredSignUpClientView() {
       nationality_id: optionSchema,
       currency_id: optionSchema,
       birth_date: zod.any().optional(), // Removed validation as requested
-      gender: zod.string().min(1, { message: 'Gender is required!' }),
+      gender: zod.string().min(1, { message: t('auth.genderRequired') }),
       referral_code: zod.string().optional(),
     })
     .refine((data) => data.password === data.password_confirmation, {
@@ -216,12 +217,12 @@ export function CenteredSignUpClientView() {
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
             <Field.Select
               name="gender"
-              label="Gender"
-              placeholder="Select Gender"
+              label={t('auth.gender')}
+              placeholder={t('auth.selectGender')}
               InputLabelProps={{ shrink: true }}
             >
-              <option value="male">Male</option>
-              <option value="female">Female</option>
+              <MenuItem value="male">{t('auth.male')}</MenuItem>
+              <MenuItem value="female">{t('auth.female')}</MenuItem>
             </Field.Select>
           </Stack>
 
@@ -333,13 +334,13 @@ export function CenteredSignUpClientView() {
           color: 'text.secondary',
         }}
       >
-        {'By signing up, I agree to '}
+        {t('auth.terms.agree')}
         <Link underline="always" color="text.primary">
-          Terms of service
+          {t('auth.terms.service')}
         </Link>
-        {' and '}
+        {t('auth.terms.and')}
         <Link underline="always" color="text.primary">
-          Privacy policy
+          {t('auth.terms.privacy')}
         </Link>
         .
       </Typography>

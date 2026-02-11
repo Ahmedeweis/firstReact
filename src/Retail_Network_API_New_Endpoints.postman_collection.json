@@ -1,0 +1,742 @@
+{
+    "info": {
+        "_postman_id": "retail-network-new-endpoints",
+        "name": "Retail Network API - New Endpoints",
+        "description": "Postman collection for all new endpoints added in the retail network requirements implementation",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Client Payment Methods",
+            "item": [
+                {
+                    "name": "List All Payment Methods",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/user/payment-methods",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "user", "payment-methods"]
+                        },
+                        "description": "Get all payment methods (credit cards) for the authenticated client user"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add New Payment Method",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"John Doe\",\n    \"card_number\": \"4111111111111111\",\n    \"expiry\": \"12/25\",\n    \"cvc\": \"123\",\n    \"type\": \"visa\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/user/payment-methods",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "auth", "user", "payment-methods"]
+                        },
+                        "description": "Add a new payment method (credit card) for the authenticated client user. Type can be: visa, mastercard, amex, bank_transfer, paypal"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Payment Method",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/user/payment-methods/:id",
+                            "host": ["{{base_url}}"],
+                            "path": [
+                                "api",
+                                "auth",
+                                "user",
+                                "payment-methods",
+                                ":id"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "Payment method ID"
+                                }
+                            ]
+                        },
+                        "description": "Delete a payment method by ID"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Client payment methods endpoints for managing credit cards"
+        },
+        {
+            "name": "Core Endpoints",
+            "item": [
+                {
+                    "name": "Get Vendors (Paginated)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/vendors?page=1&perPage=20&search=",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "vendors"],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Page number"
+                                },
+                                {
+                                    "key": "perPage",
+                                    "value": "20",
+                                    "description": "Items per page"
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "",
+                                    "description": "Search term",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "Get paginated list of vendors"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Vendors (Not Paginated)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/vendors?notPaginated=true",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "vendors"],
+                            "query": [
+                                {
+                                    "key": "notPaginated",
+                                    "value": "true",
+                                    "description": "Return all results without pagination"
+                                }
+                            ]
+                        },
+                        "description": "Get all vendors without pagination"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Products with Manufacturer Filter",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/products?page=2&per_page=50&search=laptop&vendor_id=8&category_id=4&manufacturer_id=5&price_min=200&price_max=2000",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "products"],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "2",
+                                    "description": "Page number"
+                                },
+                                {
+                                    "key": "per_page",
+                                    "value": "50",
+                                    "description": "Items per page"
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "laptop",
+                                    "description": "Search term"
+                                },
+                                {
+                                    "key": "vendor_id",
+                                    "value": "8",
+                                    "description": "Vendor ID",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "category_id",
+                                    "value": "4",
+                                    "description": "Category ID"
+                                },
+                                {
+                                    "key": "manufacturer_id",
+                                    "value": "5",
+                                    "description": "Manufacturer ID (NEW)"
+                                },
+                                {
+                                    "key": "price_min",
+                                    "value": "200",
+                                    "description": "Minimum price"
+                                },
+                                {
+                                    "key": "price_max",
+                                    "value": "2000",
+                                    "description": "Maximum price"
+                                },
+                                {
+                                    "key": "notPaginated",
+                                    "value": "false",
+                                    "description": "Return all results without pagination",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "Get products with all filters including the new manufacturer_id filter"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Core endpoints including vendors and enhanced products"
+        },
+        {
+            "name": "Vendor Referrals",
+            "item": [
+                {
+                    "name": "List All Members",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/vendor/referrals",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "vendor", "referrals"]
+                        },
+                        "description": "List all members (referrals) in the vendor's network across all 3 levels"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Referral Tree",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/vendor/referrals/tree",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "vendor", "referrals", "tree"]
+                        },
+                        "description": "Get hierarchical referral tree showing level 1, 2, and 3 members"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Vendor referral management endpoints"
+        },
+        {
+            "name": "Vendor Successors",
+            "item": [
+                {
+                    "name": "Add/Update Successor",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Ahmed mohamed\",\n    \"nationality\": \"Saudi\",\n    \"phone\": \"0643313464332\",\n    \"proof_type\": \"passport\",\n    \"proof_id\": \"4461313465465865635547\",\n    \"kinship\": \"son\",\n    \"avatar\": null\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/vendor/successors",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "vendor", "successors"]
+                        },
+                        "description": "Add or update a successor profile for the vendor (in case of disability or death).\n\n**IMPORTANT:** This endpoint uses an upsert pattern - if a successor already exists for the vendor, it will be updated instead of creating a duplicate record.\n\n**Request Fields:**\n- name (required): Successor's full name\n- nationality (optional): Successor's nationality\n- phone (required): Contact phone number\n- proof_type (required): passport or personal_id\n- proof_id (required): ID number from the proof document\n- kinship (required): son, brother, father, daughter, sister, mother, spouse, or other\n- avatar (optional): Avatar image URL or path"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Successor",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/vendor/successors/:successor",
+                            "host": ["{{base_url}}"],
+                            "path": [
+                                "api",
+                                "vendor",
+                                "successors",
+                                ":successor"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "successor",
+                                    "value": "1",
+                                    "description": "Successor ID"
+                                }
+                            ]
+                        },
+                        "description": "Get successor details by ID"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Successor",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Ahmed mohamed Updated\",\n    \"nationality\": \"Saudi\",\n    \"phone\": \"0643313464332\",\n    \"proof_type\": \"passport\",\n    \"proof_id\": \"4461313465465865635547\",\n    \"kinship\": \"son\",\n    \"avatar\": null\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/vendor/successors/:successor",
+                            "host": ["{{base_url}}"],
+                            "path": [
+                                "api",
+                                "vendor",
+                                "successors",
+                                ":successor"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "successor",
+                                    "value": "1",
+                                    "description": "Successor ID"
+                                }
+                            ]
+                        },
+                        "description": "Update successor information"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Successor",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/vendor/successors/:successor",
+                            "host": ["{{base_url}}"],
+                            "path": [
+                                "api",
+                                "vendor",
+                                "successors",
+                                ":successor"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "successor",
+                                    "value": "1",
+                                    "description": "Successor ID"
+                                }
+                            ]
+                        },
+                        "description": "Delete a successor profile"
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Vendor successor management endpoints. The POST endpoint uses an upsert pattern - it will update an existing successor if one exists for the vendor, preventing duplicate records."
+        },
+        {
+            "name": "Vendor Products (Super Admin Only)",
+            "item": [
+                {
+                    "name": "List Super Admin Products",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/vendor/products?page=1&per_page=20",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "vendor", "products"],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "per_page",
+                                    "value": "20"
+                                },
+                                {
+                                    "key": "category_id",
+                                    "value": "",
+                                    "description": "Filter by category",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "manufacturer_id",
+                                    "value": "",
+                                    "description": "Filter by manufacturer",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "",
+                                    "description": "Search term",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "List only super admin products (products with vendor_id = NULL). Vendors can only see and manage super admin products."
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Vendor product endpoints - only shows super admin products"
+        },
+        {
+            "name": "P2P Transfers (User)",
+            "item": [
+                {
+                    "name": "Create P2P Transfer",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"recipient_email\": \"recipient@example.com\",\n    \"amount\": 100.00,\n    \"note\": \"Payment for services\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/p2p-transfers",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "p2p-transfers"]
+                        },
+                        "description": "Create a P2P balance transfer to another user.\n\n**Business Logic:**\n- 5% commission is deducted from sender\n- Total deducted = amount + (amount * 0.05)\n- Recipient receives the full amount\n- Commission goes to company revenue\n\n**Validation:**\n- Recipient must exist (by email)\n- Cannot transfer to yourself\n- Must have sufficient balance (including commission)\n- Amount must be > 0\n\n**Available for:** Client, Vendor, Investor"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List My P2P Transfers",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/p2p-transfers?type=&per_page=15",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "p2p-transfers"],
+                            "query": [
+                                {
+                                    "key": "type",
+                                    "value": "",
+                                    "description": "Filter by type: 'sent' or 'received' (optional)"
+                                },
+                                {
+                                    "key": "per_page",
+                                    "value": "15",
+                                    "description": "Items per page (default: 15)"
+                                }
+                            ]
+                        },
+                        "description": "List all P2P transfers for the authenticated user (both sent and received).\n\n**Filters:**\n- type: 'sent' | 'received' (optional)\n- per_page: pagination size"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get P2P Transfer Details",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{auth_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/p2p-transfers/:id",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "p2p-transfers", ":id"],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "Transfer ID"
+                                }
+                            ]
+                        },
+                        "description": "Get details of a specific P2P transfer.\n\n**Note:** User can only view transfers they are involved in (as sender or recipient)."
+                    },
+                    "response": []
+                }
+            ],
+            "description": "P2P (Peer-to-Peer) balance transfer endpoints. Available to all authenticated users: Client, Vendor, Investor.\n\n**Commission:** 5% service fee on all transfers\n**Security:** All operations are atomic (database transactions)"
+        },
+        {
+            "name": "P2P Transfers (Admin)",
+            "item": [
+                {
+                    "name": "List All P2P Transfers",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/admin/p2p-transfers?sender_id=&recipient_id=&date_from=&date_to=&per_page=15",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "admin", "p2p-transfers"],
+                            "query": [
+                                {
+                                    "key": "sender_id",
+                                    "value": "",
+                                    "description": "Filter by sender user ID (optional)"
+                                },
+                                {
+                                    "key": "recipient_id",
+                                    "value": "",
+                                    "description": "Filter by recipient user ID (optional)"
+                                },
+                                {
+                                    "key": "date_from",
+                                    "value": "",
+                                    "description": "Filter from date (YYYY-MM-DD)"
+                                },
+                                {
+                                    "key": "date_to",
+                                    "value": "",
+                                    "description": "Filter to date (YYYY-MM-DD)"
+                                },
+                                {
+                                    "key": "per_page",
+                                    "value": "15",
+                                    "description": "Items per page"
+                                }
+                            ]
+                        },
+                        "description": "Admin endpoint to list all P2P transfers across the platform for monitoring purposes.\n\n**Filters:**\n- sender_id: Filter by sender\n- recipient_id: Filter by recipient\n- date_from / date_to: Date range filter"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get P2P Transfer Details (Admin)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_token}}",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/admin/p2p-transfers/:id",
+                            "host": ["{{base_url}}"],
+                            "path": ["api", "admin", "p2p-transfers", ":id"],
+                            "variable": [
+                                {
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "Transfer ID"
+                                }
+                            ]
+                        },
+                        "description": "Admin endpoint to view details of any P2P transfer."
+                    },
+                    "response": []
+                }
+            ],
+            "description": "Admin endpoints for monitoring all P2P transfers across the platform."
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "string"
+        },
+        {
+            "key": "auth_token",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "admin_token",
+            "value": "",
+            "type": "string"
+        }
+    ]
+}

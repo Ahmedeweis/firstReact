@@ -12,7 +12,7 @@ import { NavMobile } from './nav/mobile';
 import { NavDesktop } from './nav/desktop';
 import { HeaderBase } from '../core/header-base';
 import { LayoutSection } from '../core/layout-section';
-import { navData as mainNavData } from '../config-nav-main';
+import { useNavData } from '../config-nav-main';
 
 import type { NavMainProps } from './nav/types';
 
@@ -37,6 +37,7 @@ export function MainLayout({ sx, data, children }: MainLayoutProps) {
 
   const layoutQuery: Breakpoint = 'md';
 
+  const mainNavData = useNavData();
   const navData = data?.nav ?? mainNavData;
 
   return (

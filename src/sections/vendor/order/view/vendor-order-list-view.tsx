@@ -14,6 +14,8 @@ import { useRouter } from 'src/routes/hooks';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
+import { useTranslate } from 'src/locales';
+
 // import axiosInstance, { endpoints } from 'src/utils/axios';
 
 import { DashboardContent } from 'src/layouts/dashboard';
@@ -38,18 +40,20 @@ import { VendorOrderTableRow } from '../vendor-order-table-row';
 
 // ----------------------------------------------------------------------
 
-const TABLE_HEAD = [
-    { id: 'orderNumber', label: 'Order', width: 88 },
-    { id: 'customer', label: 'Customer' },
-    { id: 'date', label: 'Date', width: 140 },
-    { id: 'items', label: 'Items', width: 120, align: 'center' },
-    { id: 'price', label: 'Price', width: 140 },
-    { id: 'status', label: 'Status', width: 110 },
-    { id: '', width: 88 },
-];
 
 export function VendorOrderListView() {
+    const { t } = useTranslate();
     const table = useTable({ defaultOrderBy: 'orderNumber' });
+
+    const TABLE_HEAD = [
+        { id: 'orderNumber', label: t('order.list.tableHead.orderNumber'), width: 88 },
+        { id: 'customer', label: t('order.list.tableHead.customer') },
+        { id: 'date', label: t('order.list.tableHead.date'), width: 140 },
+        { id: 'items', label: t('order.list.tableHead.items'), width: 120, align: 'center' },
+        { id: 'price', label: t('order.list.tableHead.price'), width: 140 },
+        { id: 'status', label: t('order.list.tableHead.status'), width: 110 },
+        { id: '', width: 88 },
+    ];
 
     const router = useRouter();
 
@@ -151,11 +155,11 @@ export function VendorOrderListView() {
     return (
         <DashboardContent>
             <CustomBreadcrumbs
-                heading="Order List"
+                heading={t('order.list.title')}
                 links={[
-                    { name: 'Dashboard', href: paths.dashboard.root },
-                    { name: 'Order', href: paths.dashboard.vendor.order.root },
-                    { name: 'List' },
+                    { name: t('order.breadcrumbs.dashboard'), href: paths.dashboard.root },
+                    { name: t('order.breadcrumbs.order'), href: paths.dashboard.vendor.order.root },
+                    { name: t('order.breadcrumbs.list') },
                 ]}
                 sx={{ mb: { xs: 3, md: 5 } }}
             />

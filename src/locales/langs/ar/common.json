@@ -1,10 +1,20 @@
 {
   "common": {
     "ok": "موافق",
-    "cancel": "إلغاء"
+    "cancel": "إلغاء",
+    "home": "الرئيسية"
+  },
+  "home": {
+    "hero": {
+      "hello": "مرحباً",
+      "welcomeTo": "أهلاً بك في",
+      "ourSystem": "نظامنا",
+      "welcomeMessage": "أنضم الأن  او سجل الدخول",
+      "minimalDesignSystem": "أنضم الأن  او سجل الدخول"
+    }
   },
   "auth": {
-    "signUpVendorTitle": "سجّل كبائع",
+    "signUpVendorTitle": "سجّل كمسوق",
     "signUpClientTitle": "سجّل كعميل",
     "signUpInvestorTitle": "سجّل كمستثمر",
     "signInTitle": "تسجيل الدخول إلى حسابك",
@@ -31,12 +41,15 @@
       "nationalIdInvalid": "يجب أن يكون رقم الهوية صالحًا!"
     },
     "signInHeader": "تسجيل الدخول إلى حسابك",
-    "createAccountVendor": "إنشاء حساب بائع",
+    "createAccountVendor": "إنشاء حساب مسوق",
     "createAccountClient": "إنشاء حساب عميل",
     "createAccountInvestor": "إنشاء حساب مستثمر",
     "signInButton": "تسجيل الدخول",
     "createAccountButton": "إنشاء حساب",
     "signIn": "تسجيل الدخول",
+    "signUpVendor": "سجّل كمسوق",
+    "signUpClient": "سجّل كعميل",
+    "signUpInvestor": "سجّل كمستثمر",
     "dontHaveAccount": "ليس لديك حساب؟",
     "haveAccount": "هل لديك حساب؟",
     "getStarted": "ابدأ الآن",
@@ -77,7 +90,12 @@
       "referralCode": "أدخل كود الإحالة (اختياري)",
       "password": "أدخل كلمة المرور",
       "confirmPassword": "أعد إدخال كلمة المرور"
-    }
+    },
+    "gender": "الجنس",
+    "selectGender": "اختر الجنس",
+    "male": "ذكر",
+    "female": "أنثى",
+    "genderRequired": "الجنس مطلوب!"
   },
   "vendor": {
     "sidebar": {
@@ -547,7 +565,22 @@
     "selectPaymentMethod": "اختر طريقة الدفع لإتمام العملية",
     "processPayment": "إتمام الدفع",
     "paymentProcessing": "جاري المعالجة...",
-    "paymentMethodRequired": "طريقة الدفع مطلوبة"
+    "paymentMethodRequired": "طريقة الدفع مطلوبة",
+    "status": {
+      "pending": "قيد الانتظار",
+      "completed": "مكتمل",
+      "cancelled": "ملغي",
+      "refunded": "مسترجع",
+      "processing": "قيد المعالجة"
+    },
+    "list": {
+      "title": "قائمة الطلبات"
+    },
+    "breadcrumbs": {
+      "dashboard": "لوحة التحكم",
+      "order": "الطلبات",
+      "list": "القائمة"
+    }
   },
   "orderDetails": {
     "notFound": "الطلب غير موجود",

@@ -1,8 +1,8 @@
-import type {} from '@mui/lab/themeAugmentation';
-import type {} from '@mui/x-tree-view/themeAugmentation';
-import type {} from '@mui/x-data-grid/themeAugmentation';
-import type {} from '@mui/x-date-pickers/themeAugmentation';
-import type {} from '@mui/material/themeCssVarsAugmentation';
+import type { } from '@mui/lab/themeAugmentation';
+import type { } from '@mui/x-tree-view/themeAugmentation';
+import type { } from '@mui/x-data-grid/themeAugmentation';
+import type { } from '@mui/x-date-pickers/themeAugmentation';
+import type { } from '@mui/material/themeCssVarsAugmentation';
 
 import CssBaseline from '@mui/material/CssBaseline';
 import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
@@ -26,7 +26,9 @@ export function ThemeProvider({ children }: Props) {
 
   const settings = useSettingsContext();
 
-  const theme = createTheme(currentLang?.systemValue, settings);
+  const direction = currentLang?.value === 'ar' ? 'rtl' : 'ltr';
+
+  const theme = createTheme(currentLang?.systemValue, { ...settings, direction });
 
   return (
     <CssVarsProvider
@@ -35,7 +37,7 @@ export function ThemeProvider({ children }: Props) {
       modeStorageKey={schemeConfig.modeStorageKey}
     >
       <CssBaseline />
-      <RTL direction={currentLang?.value === 'ar' ? 'rtl' : 'ltr'}>{children}</RTL>
+      <RTL direction={direction}>{children}</RTL>
     </CssVarsProvider>
   );
 }

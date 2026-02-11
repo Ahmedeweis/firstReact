@@ -321,7 +321,7 @@ export function OrderListView() {
                 key={tab.value}
                 iconPosition="end"
                 value={tab.value}
-                label={tab.key === 'all' ? t('order.list.all') : ORDER_STATUS_OPTIONS.find(opt => opt.value === tab.value)?.label || tab.value}
+                label={tab.key === 'all' ? t('order.list.all') : t(`order.status.${tab.value}`)}
                 icon={
                   <Label
                     variant={

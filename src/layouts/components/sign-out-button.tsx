@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 
 import { useRouter } from 'src/routes/hooks';
 
+import { useTranslate } from 'src/locales';
+
 import { toast } from 'src/components/snackbar';
 
 import { useAuthContext } from 'src/auth/hooks';
@@ -15,7 +17,7 @@ import { signOut as jwtSignOut } from 'src/auth/context/jwt/action';
 // ----------------------------------------------------------------------
 
 const signOut =
-    jwtSignOut;
+  jwtSignOut;
 
 type Props = ButtonProps & {
   sx?: SxProps<Theme>;
@@ -24,6 +26,7 @@ type Props = ButtonProps & {
 
 export function SignOutButton({ onClose, ...other }: Props) {
   const router = useRouter();
+  const { t } = useTranslate();
 
   const { checkUserSession } = useAuthContext();
 
@@ -50,7 +53,7 @@ export function SignOutButton({ onClose, ...other }: Props) {
       onClick={handleLogout}
       {...other}
     >
-      Logout
+      {t('accountPage.accountDrawer.logout')}
     </Button>
   );
 }

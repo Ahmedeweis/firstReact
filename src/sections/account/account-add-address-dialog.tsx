@@ -43,9 +43,9 @@ export const AddAddressSchema = zod.object({
   country_id: zod.string().optional(),
   state_id: zod.string().optional(),
   city_id: zod.string().optional(),
-  post_code: zod.string().min(1, 'Post code is required'),
-  latitude: zod.string().min(1, 'Latitude is required'),
-  longitude: zod.string().min(1, 'Longitude is required'),
+  post_code: zod.string().optional(),
+  latitude: zod.string().optional(),
+  longitude: zod.string().optional(),
 });
 
 export type AddAddressSchemaType = zod.infer<typeof AddAddressSchema>;
@@ -129,7 +129,7 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
       try {
         setLoadingStates(true);
         console.log('Fetching states for country:', selectedCountry);
-        const response = await axiosInstance.get(endpoints.core.states(selectedCountry));
+        const response = await axiosInstance.get(`${endpoints.core.states}?country_id=${selectedCountry}`);
         console.log('States response:', response.data);
         const statesData = response.data.data || [];
         console.log('Number of states loaded:', statesData.length);
@@ -157,7 +157,7 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
       try {
         setLoadingCities(true);
         console.log('Fetching cities for state:', selectedState);
-        const response = await axiosInstance.get(endpoints.core.cities(selectedState));
+        const response = await axiosInstance.get(`${endpoints.core.cities}?state_id=${selectedState}`);
         console.log('Cities response:', response.data);
         const citiesData = response.data.data || [];
         console.log('Number of cities loaded:', citiesData.length);
@@ -180,15 +180,15 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
     try {
       setIsSubmitting(true);
 
-      // For testing: Using hardcoded IDs
+      // Use actual selected values from the form
       const requestBody = {
         address: data.address,
-        state_id: 1,
-        country_id: 1,
-        city_id: 1,
-        post_code: data.post_code,
-        latitude: parseFloat(data.latitude),
-        longitude: parseFloat(data.longitude),
+        country_id: selectedCountry ? parseInt(selectedCountry, 10) : undefined,
+        state_id: selectedState ? parseInt(selectedState, 10) : undefined,
+        city_id: data.city_id ? parseInt(data.city_id, 10) : undefined,
+        post_code: data.post_code || undefined,
+        latitude: data.latitude ? parseFloat(data.latitude) : undefined,
+        longitude: data.longitude ? parseFloat(data.longitude) : undefined,
       };
 
       console.log('Sending request with body:', requestBody);
@@ -231,8 +231,7 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
       <form onSubmit={onSubmit}>
         <DialogContent>
           <Stack spacing={3}>
-            {/* Note: Country, State, and City dropdowns are for display only.
-                Testing mode: All submissions use IDs of 1 */}
+
             <TextField
               {...register('address')}
               fullWidth
@@ -261,7 +260,6 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
                 <TextField
                   {...params}
                   label={t('accountPage.selectCountry')}
-                  helperText={`${t('accountPage.selectCountry')} (Optional - for display only)`}
                   inputProps={{
                     ...params.inputProps,
                     autoComplete: 'new-password', // disable autocomplete and autofill
@@ -287,7 +285,6 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
                 <TextField
                   {...params}
                   label={t('accountPage.selectState')}
-                  helperText={`${t('accountPage.selectState')} (Optional - for display only)`}
                 />
               )}
               disabled={isSubmitting || loadingStates || !selectedCountry}
@@ -307,7 +304,6 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
                 <TextField
                   {...params}
                   label={t('accountPage.selectCity')}
-                  helperText={`${t('accountPage.selectCity')} (Optional - for display only)`}
                 />
               )}
               disabled={isSubmitting || loadingCities || !selectedState}
@@ -318,7 +314,7 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
               fullWidth
               label={t('accountPage.postCode')}
               error={!!errors.post_code}
-              helperText={errors.post_code?.message}
+              helperText={errors.post_code?.message || "Optional"}
               disabled={isSubmitting}
             />
 
@@ -330,7 +326,7 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
                 type="number"
                 inputProps={{ step: 'any' }}
                 error={!!errors.latitude}
-                helperText={errors.latitude?.message}
+                helperText={errors.latitude?.message || "Optional"}
                 disabled={isSubmitting}
               />
 
@@ -341,7 +337,7 @@ export function AccountAddAddressDialog({ open, onClose, onAddressAdded }: Props
                 type="number"
                 inputProps={{ step: 'any' }}
                 error={!!errors.longitude}
-                helperText={errors.longitude?.message}
+                helperText={errors.longitude?.message || "Optional"}
                 disabled={isSubmitting}
               />
             </Box>
